@@ -66,7 +66,7 @@ Recommended Movie 1,Recommended Movie 2,Recommended Movie 3
 - Parsing → Validation → Recommendation workflow  
 
 ### ✔️ **Bug Tracking**
-- All bugs are logged in **Jira** or **Bugzilla**
+- All bugs are logged in **Jira**
 
 ---
 
