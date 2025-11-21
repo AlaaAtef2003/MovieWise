@@ -1,8 +1,9 @@
-package InOut;
+package Models.src.main.java.InOut;
 
 import Models.Movies;
 import Models.Users;
-import Services.InputValidator;
+import Models.src.main.java.Services.InputValidator;
+
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -10,7 +11,7 @@ import java.util.*;
 
 public class FileReaderService {
 
-    private final InputValidator validator = new InputValidator();
+    public final InputValidator  validator = new InputValidator();
 
     // --------------------------
     // Read Movies

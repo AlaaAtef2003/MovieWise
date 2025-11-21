@@ -1,12 +1,15 @@
-package org.example;
+package Models.src.main.java.org.Main;
 
 
 
 import Models.Movies;
+
+
 import Models.Users;
-import InOut.FileReaderService;
-import InOut.FileWriterService;
-import Services. recommendMovies;
+import Models.src.main.java.InOut.FileReaderService;
+import Models.src.main.java.InOut.FileWriterService;
+import Models.src.main.java.Services.recommendMovies;
+
 
 import java.io.FileWriter;
 import java.util.List;

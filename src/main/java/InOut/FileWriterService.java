@@ -1,9 +1,10 @@
-package InOut;
+package Models.src.main.java.InOut;
 
 
 import Models.Movies;
 import Models.Users;
-import Services.recommendMovies;
+import Models.src.main.java.Services.recommendMovies;
+
 
 import java.io.FileWriter;
 import java.util.List;
