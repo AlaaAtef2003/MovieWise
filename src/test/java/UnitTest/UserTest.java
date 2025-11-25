@@ -1,9 +1,11 @@
 package UnitTest;
 
-import main.java.InOut.FileReaderService;
-import main.java.Models.Users;
-import main.java.Services.InputValidator;
+import InOut.FileReaderService;
+import Models.Users;
+import Services.InputValidator;
 import org.junit.Test;
+
+import java.io.FileWriter;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -529,13 +531,17 @@ public class UserTest {
     public void testReadUsers_validFile_success() throws Exception {
         FileReaderService service = new FileReaderService();
 
-        String path = "users.txt";
+        String path = "test.txt";
+ //      FileWriter w = new FileWriter("test.txt");
+//        w.write("5\n12\n31\n45\n121\n4\n");
+//        w.close();
+
         List<Users> users = service.readUsers(path);
 
         assertEquals(4, users.size());
 
-        assertEquals("Ahmed Ali", users.get(0).getName());
-        assertEquals("12345678A", users.get(0).getUserId());
+        assertEquals("Ahmed Ali", users.getFirst().getName());
+        assertEquals("12345678A", users.getFirst().getUserId());
         assertEquals("JW123", users.get(0).getLikedMovieIds().get(0));
         assertEquals("A567", users.get(0).getLikedMovieIds().get(1));
 
@@ -550,7 +556,7 @@ public class UserTest {
 
         assertEquals("Mona Youssef", users.get(3).getName());
         assertEquals("99887766D", users.get(3).getUserId());
-        assertEquals("JW123", users.get(3).getLikedMovieIds().getFirst());
+        assertEquals("JW123", users.get(3).getLikedMovieIds().get(0));
         assertEquals("TC489", users.get(3).getLikedMovieIds().get(1));
         assertEquals("F314", users.get(3).getLikedMovieIds().get(2));
     }

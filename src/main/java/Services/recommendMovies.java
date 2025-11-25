@@ -1,4 +1,4 @@
-package Models.src.main.java.Services;
+package Services;
 
 import Models.Movies;
 import Models.Users;

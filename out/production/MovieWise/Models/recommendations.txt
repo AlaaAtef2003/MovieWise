@@ -1,8 +1,0 @@
-Ahmed Ali,12345678A
-John Wick,Iron Man
-sara Mostafa,87654322
-Avatar,John Wick,Iron Man,Frozen
-Omar Khaled,11223344C
-Iron Man,Frozen
-Mona Youssef,99887766D
-John Wick,Iron Man,Frozen

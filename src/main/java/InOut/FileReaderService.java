@@ -1,9 +1,8 @@
-package Models.src.main.java.InOut;
+package InOut;
 
 import Models.Movies;
 import Models.Users;
-import Models.src.main.java.Services.InputValidator;
-
+import Services.InputValidator;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -11,7 +10,7 @@ import java.util.*;
 
 public class FileReaderService {
 
-    public final InputValidator  validator = new InputValidator();
+    private final InputValidator validator = new InputValidator();
 
     // --------------------------
     // Read Movies
@@ -31,8 +30,8 @@ public class FileReaderService {
                 if (genresLine == null) break;
 
                 Movies movie = parseMovie(titleIdLine, genresLine);
-                String string = movie.toString();
-                System.out.println(string);
+//                String string = movie.toString();
+//                System.out.println(string);
                 validator.validateMovie(movie, usedMovieIds);
                 movies.add(movie);
 
@@ -51,7 +50,7 @@ public class FileReaderService {
 //        System.out.println(x);
       //  System.out.println(titleIdLine + parts.length);
         if (parts.length != 2) {
-            throw new IllegalArgumentException("Invalid movie line format: " + parts.length);
+            throw new IllegalArgumentException("Invalid movie line format: " + titleIdLine);
         }
 
         String title = parts[0].trim();
@@ -73,7 +72,11 @@ public class FileReaderService {
 
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String nameIdLine;
+
+
             while ((nameIdLine = reader.readLine()) != null) {
+
+
                 if (nameIdLine.trim().isEmpty()) {
                     continue;
                 }
@@ -93,10 +96,11 @@ public class FileReaderService {
 
     private Users parseUser(String nameIdLine, String likedMoviesLine) {
         String[] parts = nameIdLine.split("[،，,]\\s*");
-        System.out.println(parts[0]+ "       "+ parts[1]);
+       // System.out.println(parts[0]+ "       "+ parts[1]);
         if (parts.length != 2) {
             throw new IllegalArgumentException("Invalid user line format: " + nameIdLine);
         }
+        if (parts[0].startsWith(" "))throw new RuntimeException("ERROR: User Name " +  parts[0] + " is wrong");
 
         String name = parts[0].trim();
         String id = parts[1].trim();
@@ -104,4 +108,5 @@ public class FileReaderService {
 
         return new Users(name, id, likedIds);
     }
+
 }

@@ -45,7 +45,7 @@ public class OutputValidator {
     }
     public void Validaterecomend(List<String> recommended,List<Movies> movies){
         HashSet<String> seen = new HashSet<>();
-        for(var title:recommended){
+        for(String title:recommended){
             title=title.trim();
             if(title.isEmpty())
                 throw new RuntimeException("ERROR: Empty movie title found");

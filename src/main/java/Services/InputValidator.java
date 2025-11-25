@@ -1,4 +1,4 @@
-package Models.src.main.java.Services;
+package Services;
 
 import Models.Movies;
 import Models.Users;
@@ -28,11 +28,11 @@ public class InputValidator {
     }
 
     public void validateUser(Users user, Set<String> usedUserIds) {
-        System.out.println("user 1");
+       // System.out.println("user 1");
         validateUserName(user.getName());              // 1
-        System.out.println("user 2");
+       // System.out.println("user 2");
         validateUserIdFormat(user.getUserId());        // 2
-        System.out.println("user 3");
+       // System.out.println("user 3");
         checkUserIdUniqueness(user.getUserId(), usedUserIds); // 3
     }
 
@@ -42,6 +42,7 @@ public class InputValidator {
     // -------------------------------------------------
 
     private void validateMovieTitle(String title) {
+
         if (!title.matches("([A-Z][a-zA-Z]*)( [A-Z][a-zA-Z]*)*")) {
             throw new RuntimeException("ERROR: Movie Title " + title + " is wrong");
         }
@@ -101,6 +102,7 @@ public class InputValidator {
     // -------------------------------------------------
 
     private void validateUserName(String name) {
+        if (name.startsWith(" "))throw new RuntimeException("ERROR: User Name " + name + " is wrong");
         if (!name.matches("[A-Za-z]+( [A-Za-z]+)*")) {
             throw new RuntimeException("ERROR: User Name " + name + " is wrong");
         }
