@@ -64,16 +64,16 @@ class MovieTest {
 
 
         UserFile.write("""
-                Ahmed Ali,123456789\r
+                Ahmed Ali,12345678\r
                 JW123,A567\r
                 \r
-                sara Mostafa,876543229\r
+                sara Mostafa,87654322\r
                 TC489,IM902\r
                 \r
-                Omar Khaled,112233449\r
+                Omar Khaled,11223344\r
                 F314\r
                 \r
-                Mona Youssef,998877669\r
+                Mona Youssef,99887766\r
                 JW123,TC489,F314\r
                 """);
         MovieFile.close();
@@ -181,13 +181,13 @@ class MovieTest {
 
 
         UserFile.write("""
-                Ahmed Ali,123456789\r
+                Ahmed Ali,12345678\r
                 JW123,A567\r
-                sara Mostafa,876543922\r
+                sara Mostafa,87654322\r
                 TC489,IM902\r
-                Omar Khaled,112233449\r
+                Omar Khaled,11223344\r
                 F314\r
-                Mona Youssef,998877669\r
+                Mona Youssef,99887766\r
                 JW123,TC489,F314\r
                 """);
         MovieFile.flush();

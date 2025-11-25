@@ -105,7 +105,7 @@ public class InputValidator {
     }
 
     private void validateUserIdFormat(String uid) {
-        if (!uid.matches("\\d{9}[A-Za-z]?")) {
+        if (!uid.matches("\\d{8}[A-Za-z]?")) {
             throw new RuntimeException("ERROR: User Id " + uid + " is wrong");
         }
     }
