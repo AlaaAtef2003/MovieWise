@@ -1,4 +1,4 @@
-package Models.src.test.java.UnitTest;
+package UnitTest;
 
 
 import org.junit.jupiter.api.Test;

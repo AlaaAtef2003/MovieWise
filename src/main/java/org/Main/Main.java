@@ -1,4 +1,4 @@
-package Models.src.main.java.org.Main;
+package org.Main;
 
 
 
@@ -6,9 +6,9 @@ import Models.Movies;
 
 
 import Models.Users;
-import Models.src.main.java.InOut.FileReaderService;
-import Models.src.main.java.InOut.FileWriterService;
-import Models.src.main.java.Services.recommendMovies;
+import InOut.FileReaderService;
+import InOut.FileWriterService;
+import Services.*;
 
 
 import java.io.FileWriter;

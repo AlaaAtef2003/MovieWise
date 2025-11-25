@@ -1,9 +1,8 @@
-package Models.src.main.java.InOut;
+package InOut;
 
 import Models.Movies;
 import Models.Users;
-import Models.src.main.java.Services.InputValidator;
-
+import Services.*;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -51,7 +50,7 @@ public class FileReaderService {
 //        System.out.println(x);
       //  System.out.println(titleIdLine + parts.length);
         if (parts.length != 2) {
-            throw new IllegalArgumentException("Invalid movie line format: " + parts.length);
+            throw new IllegalArgumentException("Invalid movie line format");
         }
 
         String title = parts[0].trim();
