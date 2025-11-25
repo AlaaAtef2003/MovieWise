@@ -7,6 +7,7 @@ import org.junit.Test;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
 import static org.junit.Assert.*;
 
 public class UserTest {
@@ -20,7 +21,7 @@ public class UserTest {
     public void validateUserName_validName1() {
         InputValidator validator = new InputValidator();
         Set<String> ids = new HashSet<>();
-        Users user = new Users("Ahmed Ali", "12345678" , List.of());
+        Users user = new Users("Ahmed Ali", "12345678" , null);
 
         try{
             validator.validateUser(user, ids);
@@ -35,7 +36,7 @@ public class UserTest {
     public void validateUserName_validName2() {
         InputValidator validator = new InputValidator();
         Set<String> ids = new HashSet<>();
-        Users user = new Users("sara mohamed", "12345678" , List.of());
+        Users user = new Users("sara mohamed", "12345678" , null);
 
         try{
             validator.validateUser(user, ids);
@@ -50,7 +51,7 @@ public class UserTest {
     public void validateUserName_HasOnlyOneName() {
         InputValidator validator = new InputValidator();
         Set<String> ids = new HashSet<>();
-        Users user = new Users("sara", "12345678" , List.of());
+        Users user = new Users("sara", "12345678" , null);
 
         try{
             validator.validateUser(user, ids);
@@ -69,7 +70,7 @@ public class UserTest {
     public void validateUserName_SpaceAtFirst() {
         InputValidator validator = new InputValidator();
         Set<String> ids = new HashSet<>();
-        Users user = new Users(" sara mohamed", "12345678" , List.of());
+        Users user = new Users(" sara mohamed", "12345678" , null);
 
         RuntimeException exception = assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
 
@@ -82,7 +83,7 @@ public class UserTest {
     public void validateUserName_SpaceAtLast() {
         InputValidator validator = new InputValidator();
         Set<String> ids = new HashSet<>();
-        Users user = new Users("sara mohamed ", "12345678" , List.of());
+        Users user = new Users("sara mohamed ", "12345678" , null);
 
         RuntimeException exception = assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
 
@@ -95,7 +96,7 @@ public class UserTest {
     public void validateUserName_HasNumbersAtFirst1() {
         InputValidator validator = new InputValidator();
         Set<String> ids = new HashSet<>();
-        Users user = new Users("132sara Mohamed", "12345678" , List.of());
+        Users user = new Users("132sara Mohamed", "12345678" , null);
 
         RuntimeException exception = assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
 
@@ -108,7 +109,7 @@ public class UserTest {
     public void validateUserName_HasNumbersAtFirst2() {
         InputValidator validator = new InputValidator();
         Set<String> ids = new HashSet<>();
-        Users user = new Users("-1sara Mohamed", "12345678" , List.of());
+        Users user = new Users("-1sara Mohamed", "12345678" , null);
 
         RuntimeException exception = assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
 
@@ -121,7 +122,7 @@ public class UserTest {
     public void validateUserName_HasNumbersAtFirst3() {
         InputValidator validator = new InputValidator();
         Set<String> ids = new HashSet<>();
-        Users user = new Users("0sara Mohamed", "12345678" , List.of());
+        Users user = new Users("0sara Mohamed", "12345678" , null);
 
         RuntimeException exception = assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
 
@@ -134,7 +135,7 @@ public class UserTest {
     public void validateUserName_HasNumbersAtMiddle() {
         InputValidator validator = new InputValidator();
         Set<String> ids = new HashSet<>();
-        Users user = new Users("sara12 -9Mohamed", "12345678" , List.of());
+        Users user = new Users("sara12 -9Mohamed", "12345678" , null);
 
         RuntimeException exception = assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
 
@@ -147,7 +148,7 @@ public class UserTest {
     public void validateUserName_HasNumbersAtLast1() {
         InputValidator validator = new InputValidator();
         Set<String> ids = new HashSet<>();
-        Users user = new Users("sara Mohamed123", "12345678" , List.of());
+        Users user = new Users("sara Mohamed123", "12345678" , null);
 
         RuntimeException exception = assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
 
@@ -160,7 +161,7 @@ public class UserTest {
     public void validateUserName_HasNumbersAtLast2() {
         InputValidator validator = new InputValidator();
         Set<String> ids = new HashSet<>();
-        Users user = new Users("sara Mohamed-0", "12345678" , List.of());
+        Users user = new Users("sara Mohamed-0", "12345678" , null);
 
         RuntimeException exception = assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
 
@@ -173,7 +174,7 @@ public class UserTest {
     public void validateUserName_HasMoreSpacesAtMiddle() {
         InputValidator validator = new InputValidator();
         Set<String> ids = new HashSet<>();
-        Users user = new Users("sara  Mohamed", "12345678" , List.of());
+        Users user = new Users("sara  Mohamed", "12345678" , null);
 
         RuntimeException exception = assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
 
@@ -186,7 +187,7 @@ public class UserTest {
     public void validateUserName_HasSpecialCharactersAtFirst1() {
         InputValidator validator = new InputValidator();
         Set<String> ids = new HashSet<>();
-        Users user = new Users("@#sara Mohamed", "12345678" , List.of());
+        Users user = new Users("@#sara Mohamed", "12345678" , null);
 
         RuntimeException exception = assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
 
@@ -199,7 +200,7 @@ public class UserTest {
     public void validateUserName_HasSpecialCharactersAtFirst2() {
         InputValidator validator = new InputValidator();
         Set<String> ids = new HashSet<>();
-        Users user = new Users("*()*&^%!sara Mohamed", "12345678" , List.of());
+        Users user = new Users("*()*&^%!sara Mohamed", "12345678" , null);
 
         RuntimeException exception = assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
 
@@ -212,7 +213,7 @@ public class UserTest {
     public void validateUserName_HasSpecialCharactersAtMiddle1() {
         InputValidator validator = new InputValidator();
         Set<String> ids = new HashSet<>();
-        Users user = new Users("sara! Mohamed", "12345678" , List.of());
+        Users user = new Users("sara! Mohamed", "12345678" , null);
 
         RuntimeException exception = assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
 
@@ -225,7 +226,7 @@ public class UserTest {
     public void validateUserName_HasSpecialCharactersAtMiddle2() {
         InputValidator validator = new InputValidator();
         Set<String> ids = new HashSet<>();
-        Users user = new Users("sara =Mohamed", "12345678" , List.of());
+        Users user = new Users("sara =Mohamed", "12345678" , null);
 
         RuntimeException exception = assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
 
@@ -238,7 +239,7 @@ public class UserTest {
     public void validateUserName_HasSpecialCharactersAtLast() {
         InputValidator validator = new InputValidator();
         Set<String> ids = new HashSet<>();
-        Users user = new Users("sara Mohamed+", "12345678" , List.of());
+        Users user = new Users("sara Mohamed+", "12345678" , null);
 
         RuntimeException exception = assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
 
@@ -255,7 +256,7 @@ public class UserTest {
     public void validateUserID_ValidId9NumbersOnly() {
         InputValidator validator = new InputValidator();
         Set<String> ids = new HashSet<>();
-        Users user = new Users("sara Mohamed", "123456789" , List.of());
+        Users user = new Users("sara Mohamed", "123456789" , null);
 
         try{
             validator.validateUser(user, ids);
@@ -270,7 +271,7 @@ public class UserTest {
     public void validateUserID_ValidId_8NumbersWith_1AlphabetLowercase() {
         InputValidator validator = new InputValidator();
         Set<String> ids = new HashSet<>();
-        Users user = new Users("sara Mohamed", "12345678a" , List.of());
+        Users user = new Users("sara Mohamed", "12345678a" , null);
 
         try{
             validator.validateUser(user, ids);
@@ -285,7 +286,7 @@ public class UserTest {
     public void validateUserID_ValidId_8NumbersWith_1AlphabetUppercase() {
         InputValidator validator = new InputValidator();
         Set<String> ids = new HashSet<>();
-        Users user = new Users("sara Mohamed", "12345678P" , List.of());
+        Users user = new Users("sara Mohamed", "12345678P" , null);
 
         try{
             validator.validateUser(user, ids);
@@ -304,7 +305,7 @@ public class UserTest {
     public void validateUserID_InValidId_8NumbersOnly() {
         InputValidator validator = new InputValidator();
         Set<String> ids = new HashSet<>();
-        Users user = new Users("sara Mohamed", "12345678" , List.of());
+        Users user = new Users("sara Mohamed", "12345678" , null);
 
         RuntimeException exception = assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
         assertTrue(exception.getMessage().contains("User Id"));
@@ -316,7 +317,7 @@ public class UserTest {
     public void validateUserID_InValidId_3NumbersOnly() {
         InputValidator validator = new InputValidator();
         Set<String> ids = new HashSet<>();
-        Users user = new Users("sara Mohamed", "123" , List.of());
+        Users user = new Users("sara Mohamed", "123" , null);
 
         RuntimeException exception = assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
         assertTrue(exception.getMessage().contains("User Id"));
@@ -328,7 +329,7 @@ public class UserTest {
     public void validateUserID_InValidId_10NumbersOnly() {
         InputValidator validator = new InputValidator();
         Set<String> ids = new HashSet<>();
-        Users user = new Users("sara Mohamed", "1234567891" , List.of());
+        Users user = new Users("sara Mohamed", "1234567891" , null);
 
         RuntimeException exception = assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
         assertTrue(exception.getMessage().contains("User Id"));
@@ -340,7 +341,7 @@ public class UserTest {
     public void validateUserID_InValidId_15NumbersOnly() {
         InputValidator validator = new InputValidator();
         Set<String> ids = new HashSet<>();
-        Users user = new Users("sara Mohamed", "123456789123456" , List.of());
+        Users user = new Users("sara Mohamed", "123456789123456" , null);
 
         RuntimeException exception = assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
         assertTrue(exception.getMessage().contains("User Id"));
@@ -352,7 +353,7 @@ public class UserTest {
     public void validateUserID_InValidId_7Numbers_oneAlphabetAtLast() {
         InputValidator validator = new InputValidator();
         Set<String> ids = new HashSet<>();
-        Users user = new Users("sara Mohamed", "1234567A" , List.of());
+        Users user = new Users("sara Mohamed", "1234567A" , null);
 
         RuntimeException exception = assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
         assertTrue(exception.getMessage().contains("User Id"));
@@ -364,7 +365,7 @@ public class UserTest {
     public void validateUserID_InValidId_9Numbers_oneAlphabetAtLast() {
         InputValidator validator = new InputValidator();
         Set<String> ids = new HashSet<>();
-        Users user = new Users("sara Mohamed", "123456789A" , List.of());
+        Users user = new Users("sara Mohamed", "123456789A" , null);
 
         RuntimeException exception = assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
         assertTrue(exception.getMessage().contains("User Id"));
@@ -376,7 +377,7 @@ public class UserTest {
     public void validateUserID_InValidId_8Numbers_oneAlphabetAtFirst() {
         InputValidator validator = new InputValidator();
         Set<String> ids = new HashSet<>();
-        Users user = new Users("sara Mohamed", "A12345678" , List.of());
+        Users user = new Users("sara Mohamed", "A12345678" , null);
 
         RuntimeException exception = assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
         assertTrue(exception.getMessage().contains("User Id"));
@@ -388,7 +389,7 @@ public class UserTest {
     public void validateUserID_InValidId_9AlphabetCharacters() {
         InputValidator validator = new InputValidator();
         Set<String> ids = new HashSet<>();
-        Users user = new Users("sara Mohamed", "AbncDjklp" , List.of());
+        Users user = new Users("sara Mohamed", "AbncDjklp" , null);
 
         RuntimeException exception = assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
         assertTrue(exception.getMessage().contains("User Id"));
@@ -421,8 +422,8 @@ public class UserTest {
         InputValidator validator = new InputValidator();
         Set<String> ids = new HashSet<>();
 
-        Users user1 = new Users("Sara Mohamed", "12345678A", List.of());
-        Users user2 = new Users("Omar Salah", "11345678A", List.of());
+        Users user1 = new Users("Sara Mohamed", "12345678A", null);
+        Users user2 = new Users("Omar Salah", "11345678A", null);
 
         try{
             validator.validateUser(user1, ids);
@@ -439,11 +440,11 @@ public class UserTest {
         InputValidator validator = new InputValidator();
         Set<String> ids = new HashSet<>();
 
-        Users user1 = new Users("sara Mohamed", "12345678A", List.of());
-        Users user2 = new Users("Omar Salah", "11445678A", List.of());
-        Users user3 = new Users("Ali Mosa", "11346678A", List.of());
-        Users user4 = new Users("Mohamed Ahmed", "11345078A", List.of());
-        Users user5 = new Users("Amr Salah", "11345688A", List.of());
+        Users user1 = new Users("sara Mohamed", "12345678A", null);
+        Users user2 = new Users("Omar Salah", "11445678A", null);
+        Users user3 = new Users("Ali Mosa", "11346678A", null);
+        Users user4 = new Users("Mohamed Ahmed", "11345078A", null);
+        Users user5 = new Users("Amr Salah", "11345688A", null);
 
         try{
             validator.validateUser(user1, ids);
@@ -468,8 +469,8 @@ public class UserTest {
         InputValidator validator = new InputValidator();
         Set<String> ids = new HashSet<>();
 
-        Users user1 = new Users("sara Mohamed", "12345678A", List.of());
-        Users user2 = new Users("Omar Salah", "12345678A", List.of());
+        Users user1 = new Users("sara Mohamed", "12345678A", null);
+        Users user2 = new Users("Omar Salah", "12345678A", null);
 
         try{
             validator.validateUser(user1, ids);
@@ -488,11 +489,11 @@ public class UserTest {
         InputValidator validator = new InputValidator();
         Set<String> ids = new HashSet<>();
 
-        Users user1 = new Users("sara Mohamed", "12345678A", List.of());
-        Users user2 = new Users("Omar Salah", "12345678A", List.of());
-        Users user3 = new Users("Ali Mosa", "12345678A", List.of());
-        Users user4 = new Users("Mohamed Ahmed", "12345878A", List.of());
-        Users user5 = new Users("Amr Salah", "12345679A", List.of());
+        Users user1 = new Users("sara Mohamed", "12345678A", null);
+        Users user2 = new Users("Omar Salah", "12345678A", null);
+        Users user3 = new Users("Ali Mosa", "12345678A", null);
+        Users user4 = new Users("Mohamed Ahmed", "12345878A", null);
+        Users user5 = new Users("Amr Salah", "12345679A", null);
 
         try{
             validator.validateUser(user1, ids);
@@ -520,7 +521,6 @@ public class UserTest {
     }
 
 
-
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -534,14 +534,14 @@ public class UserTest {
 
         assertEquals(4, users.size());
 
-        assertEquals("Ahmed Ali", users.getFirst().getName());
-        assertEquals("12345678A", users.getFirst().getUserId());
-        assertEquals("JW123", users.getFirst().getLikedMovieIds().getFirst());
-        assertEquals("A567", users.getFirst().getLikedMovieIds().get(1));
+        assertEquals("Ahmed Ali", users.get(0).getName());
+        assertEquals("12345678A", users.get(0).getUserId());
+        assertEquals("JW123", users.get(0).getLikedMovieIds().get(0));
+        assertEquals("A567", users.get(0).getLikedMovieIds().get(1));
 
         assertEquals("sara Mostafa", users.get(1).getName());
         assertEquals("87654322", users.get(1).getUserId());
-        assertEquals("TC489", users.get(1).getLikedMovieIds().getFirst());
+        assertEquals("TC489", users.get(1).getLikedMovieIds().get(0));
         assertEquals("IM902", users.get(1).getLikedMovieIds().get(1));
 
         assertEquals("Omar Khaled", users.get(2).getName());
