@@ -1,13 +1,32 @@
 package UnitTest;
 
-import main.java.InOut.FileReaderService;
-import main.java.Models.Users;
-import main.java.Services.InputValidator;
-import org.junit.Test;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import static org.junit.Assert.*;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.*;
+import java.util.Random;
+import java.util.logging.FileHandler;
+
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
+
+import InOut.FileReaderService;
+import InOut.FileWriterService;
+import Models.Movies;
+import Models.Users;
+import Services.InputValidator;
+import Services.recommendMovies;
 
 public class UserTest {
 
@@ -18,7 +37,7 @@ public class UserTest {
     // 1) Uppercase Name
     @Test
     public void validateUserName_validName1() {
-        InputValidator validator = new InputValidator();
+       InputValidator validator = new InputValidator();
         Set<String> ids = new HashSet<>();
         Users user = new Users("Ahmed Ali", "12345678" , List.of());
 
@@ -554,4 +573,5 @@ public class UserTest {
         assertEquals("TC489", users.get(3).getLikedMovieIds().get(1));
         assertEquals("F314", users.get(3).getLikedMovieIds().get(2));
     }
+
 }
