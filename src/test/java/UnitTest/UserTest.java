@@ -23,7 +23,7 @@ public class UserTest {
     public void validateUserName_validName1() {
         InputValidator validator = new InputValidator();
         Set<String> ids = new HashSet<>();
-        Users user = new Users("Ahmed Ali", "12345678" , null);
+        Users user = new Users("Ahmed Ali", "123456789" , null);
 
         try{
             validator.validateUser(user, ids);
@@ -38,7 +38,7 @@ public class UserTest {
     public void validateUserName_validName2() {
         InputValidator validator = new InputValidator();
         Set<String> ids = new HashSet<>();
-        Users user = new Users("sara mohamed", "12345678" , null);
+        Users user = new Users("sara mohamed", "123456789" , null);
 
         try{
             validator.validateUser(user, ids);
@@ -53,7 +53,7 @@ public class UserTest {
     public void validateUserName_HasOnlyOneName() {
         InputValidator validator = new InputValidator();
         Set<String> ids = new HashSet<>();
-        Users user = new Users("sara", "12345678" , null);
+        Users user = new Users("sara", "123456789" , null);
 
         try{
             validator.validateUser(user, ids);
@@ -273,7 +273,7 @@ public class UserTest {
     public void validateUserID_ValidId_8NumbersWith_1AlphabetLowercase() {
         InputValidator validator = new InputValidator();
         Set<String> ids = new HashSet<>();
-        Users user = new Users("sara Mohamed", "12345678a" , null);
+        Users user = new Users("sara Mohamed", "123456789a" , null);
 
         try{
             validator.validateUser(user, ids);
@@ -288,7 +288,7 @@ public class UserTest {
     public void validateUserID_ValidId_8NumbersWith_1AlphabetUppercase() {
         InputValidator validator = new InputValidator();
         Set<String> ids = new HashSet<>();
-        Users user = new Users("sara Mohamed", "12345678P" , null);
+        Users user = new Users("sara Mohamed", "123456789P" , null);
 
         try{
             validator.validateUser(user, ids);
@@ -367,7 +367,7 @@ public class UserTest {
     public void validateUserID_InValidId_9Numbers_oneAlphabetAtLast() {
         InputValidator validator = new InputValidator();
         Set<String> ids = new HashSet<>();
-        Users user = new Users("sara Mohamed", "123456789A" , null);
+        Users user = new Users("sara Mohamed", "1234567891A" , null);
 
         RuntimeException exception = assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
         assertTrue(exception.getMessage().contains("User Id"));
@@ -408,7 +408,7 @@ public class UserTest {
         InputValidator validator = new InputValidator();
         Set<String> ids = new HashSet<>();
 
-        Users user = new Users("sara mohamed", "12345678A", null);
+        Users user = new Users("sara mohamed", "123456789A", null);
 
         try{
             validator.validateUser(user, ids);
@@ -424,8 +424,8 @@ public class UserTest {
         InputValidator validator = new InputValidator();
         Set<String> ids = new HashSet<>();
 
-        Users user1 = new Users("Sara Mohamed", "12345678A", null);
-        Users user2 = new Users("Omar Salah", "11345678A", null);
+        Users user1 = new Users("Sara Mohamed", "123456789A", null);
+        Users user2 = new Users("Omar Salah", "113456789A", null);
 
         try{
             validator.validateUser(user1, ids);
@@ -442,11 +442,11 @@ public class UserTest {
         InputValidator validator = new InputValidator();
         Set<String> ids = new HashSet<>();
 
-        Users user1 = new Users("sara Mohamed", "12345678A", null);
-        Users user2 = new Users("Omar Salah", "11445678A", null);
-        Users user3 = new Users("Ali Mosa", "11346678A", null);
-        Users user4 = new Users("Mohamed Ahmed", "11345078A", null);
-        Users user5 = new Users("Amr Salah", "11345688A", null);
+        Users user1 = new Users("sara Mohamed", "123456789A", null);
+        Users user2 = new Users("Omar Salah", "114456789A", null);
+        Users user3 = new Users("Ali Mosa", "113466789A", null);
+        Users user4 = new Users("Mohamed Ahmed", "113450789A", null);
+        Users user5 = new Users("Amr Salah", "113456889A", null);
 
         try{
             validator.validateUser(user1, ids);
@@ -471,8 +471,8 @@ public class UserTest {
         InputValidator validator = new InputValidator();
         Set<String> ids = new HashSet<>();
 
-        Users user1 = new Users("sara Mohamed", "12345678A", null);
-        Users user2 = new Users("Omar Salah", "12345678A", null);
+        Users user1 = new Users("sara Mohamed", "123456789A", null);
+        Users user2 = new Users("Omar Salah", "123456789A", null);
 
         try{
             validator.validateUser(user1, ids);
@@ -491,11 +491,11 @@ public class UserTest {
         InputValidator validator = new InputValidator();
         Set<String> ids = new HashSet<>();
 
-        Users user1 = new Users("sara Mohamed", "12345678A", null);
-        Users user2 = new Users("Omar Salah", "12345678A", null);
-        Users user3 = new Users("Ali Mosa", "12345678A", null);
-        Users user4 = new Users("Mohamed Ahmed", "12345878A", null);
-        Users user5 = new Users("Amr Salah", "12345679A", null);
+        Users user1 = new Users("sara Mohamed", "123456789A", null);
+        Users user2 = new Users("Omar Salah", "123456789A", null);
+        Users user3 = new Users("Ali Mosa", "123456789A", null);
+        Users user4 = new Users("Mohamed Ahmed", "123458789A", null);
+        Users user5 = new Users("Amr Salah", "123456799A", null);
 
         try{
             validator.validateUser(user1, ids);
@@ -541,21 +541,21 @@ public class UserTest {
         assertEquals(4, users.size());
 
         assertEquals("Ahmed Ali", users.getFirst().getName());
-        assertEquals("12345678A", users.getFirst().getUserId());
+        assertEquals("123456789A", users.getFirst().getUserId());
         assertEquals("JW123", users.get(0).getLikedMovieIds().get(0));
         assertEquals("A567", users.get(0).getLikedMovieIds().get(1));
 
         assertEquals("sara Mostafa", users.get(1).getName());
-        assertEquals("87654322", users.get(1).getUserId());
+        assertEquals("876543229", users.get(1).getUserId());
         assertEquals("TC489", users.get(1).getLikedMovieIds().get(0));
         assertEquals("IM902", users.get(1).getLikedMovieIds().get(1));
 
         assertEquals("Omar Khaled", users.get(2).getName());
-        assertEquals("11223344C", users.get(2).getUserId());
+        assertEquals("112233449C", users.get(2).getUserId());
         assertEquals("F314", users.get(2).getLikedMovieIds().getFirst());
 
         assertEquals("Mona Youssef", users.get(3).getName());
-        assertEquals("99887766D", users.get(3).getUserId());
+        assertEquals("998877669D", users.get(3).getUserId());
         assertEquals("JW123", users.get(3).getLikedMovieIds().get(0));
         assertEquals("TC489", users.get(3).getLikedMovieIds().get(1));
         assertEquals("F314", users.get(3).getLikedMovieIds().get(2));
