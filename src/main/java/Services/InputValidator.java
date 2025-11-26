@@ -42,7 +42,7 @@ public class InputValidator {
     // -------------------------------------------------
     private void validateMovieTitle(String title) {
         // Each word starts with a capital letter, followed by letters OR numbers
-        if (!title.matches("([A-Z][a-zA-Z 0-9]*)( [A-Z][a-zA-Z 0-9]*)*")) {
+        if (!title.matches("([A-Z][a-zA-Z]*)( [0-9]*)*( [A-Z][a-zA-Z]*)*( [0-9]*)*")) {
             throw new RuntimeException("ERROR: Movie Title " + title + " is wrong");
         }
     }
