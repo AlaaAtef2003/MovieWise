@@ -50,7 +50,7 @@ public class Main {
             // Write ONLY the first error to output file as required
             // ------------------------------------------------------------
             try {
-                FileWriter writer = new FileWriter("recommendations.txt");
+                FileWriter writer = new FileWriter("recommendation.txt");
                 writer.write(e.getMessage());
                 writer.close();
                 System.out.println("ERROR → written to recommendations.txt");
