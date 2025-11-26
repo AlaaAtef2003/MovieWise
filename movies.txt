@@ -1,11 +1,11 @@
 Avatar 41,A156
 SciFi,Adventure
 
-John Wick ,JW123
+John Wick,JW123
 Action,Crime
 
 
-The Conjuring 31 ,TC133
+The 4 Conjuring 31 ,TC133
 Horror,Thriller
 
 
