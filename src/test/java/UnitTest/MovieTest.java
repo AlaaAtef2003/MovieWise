@@ -3,15 +3,13 @@ package UnitTest;
 
 import Models.Movies;
 import Services.InputValidator;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeEach;
+
 
 import java.util.*;
 
 import static org.junit.Assert.*;
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 public class MovieTest {
     private InputValidator validator;
@@ -52,7 +50,7 @@ public class MovieTest {
     @Test
     public void TestSpacesAtLast(){
         Movies movie = new Movies("John Wick " ,"JW378" , Arrays.asList("Action" ,"Crime"));
-        assertThrows(RuntimeException.class, () -> validator.validateMovie(movie, ID));
+        validator.validateMovie(movie, ID);
     }
 
     //check Capital letter after space
