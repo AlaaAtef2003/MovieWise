@@ -258,7 +258,7 @@ public class UserTest {
     public void validateUserID_ValidId9NumbersOnly() {
         InputValidator validator = new InputValidator();
         Set<String> ids = new HashSet<>();
-        Users user = new Users("sara Mohamed", "123456789" , null);
+        Users user = new Users("sara Mohamed", "12345678" , null);
 
         try{
             validator.validateUser(user, ids);
@@ -307,7 +307,7 @@ public class UserTest {
     public void validateUserID_InValidId_8NumbersOnly() {
         InputValidator validator = new InputValidator();
         Set<String> ids = new HashSet<>();
-        Users user = new Users("sara Mohamed", "12345678" , null);
+        Users user = new Users("sara Mohamed", "1234567891" , null);
 
         RuntimeException exception = assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
         assertTrue(exception.getMessage().contains("User Id"));
@@ -367,7 +367,7 @@ public class UserTest {
     public void validateUserID_InValidId_9Numbers_oneAlphabetAtLast() {
         InputValidator validator = new InputValidator();
         Set<String> ids = new HashSet<>();
-        Users user = new Users("sara Mohamed", "123456789A" , null);
+        Users user = new Users("sara Mohamed", "1234567891A" , null);
 
         RuntimeException exception = assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
         assertTrue(exception.getMessage().contains("User Id"));
@@ -380,6 +380,15 @@ public class UserTest {
         InputValidator validator = new InputValidator();
         Set<String> ids = new HashSet<>();
         Users user = new Users("sara Mohamed", "A12345678" , null);
+
+        RuntimeException exception = assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
+        assertTrue(exception.getMessage().contains("User Id"));
+    }
+    @Test
+    public void validateUserID_InValidId_7Numbers_oneAlphabetAtFirst() {
+        InputValidator validator = new InputValidator();
+        Set<String> ids = new HashSet<>();
+        Users user = new Users("sara Mohamed", "1234567" , null);
 
         RuntimeException exception = assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
         assertTrue(exception.getMessage().contains("User Id"));

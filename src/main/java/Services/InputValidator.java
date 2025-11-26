@@ -40,13 +40,13 @@ public class InputValidator {
     // -------------------------------------------------
     // MOVIE VALIDATION FUNCTIONS (SMALL / DIVIDED)
     // -------------------------------------------------
-
     private void validateMovieTitle(String title) {
-
-        if (!title.matches("([A-Z][a-zA-Z]*)( [A-Z][a-zA-Z]*)*")) {
+        // Each word starts with a capital letter, followed by letters OR numbers
+        if (!title.matches("([A-Z][a-zA-Z 0-9]*)( [A-Z][a-zA-Z 0-9]*)*")) {
             throw new RuntimeException("ERROR: Movie Title " + title + " is wrong");
         }
     }
+
 
     private void validateMovieIdLetters(String title, String id) {
         String letters = extractCapitalLetters(title);
@@ -68,10 +68,6 @@ public class InputValidator {
             throw new RuntimeException("ERROR: Movie Id numbers " + movieId + " aren’t unique");
         }
 
-//        // Must be UNIQUE digits
-//        if (numbers.chars().distinct().count() != 3) {
-//            throw new RuntimeException("ERROR: Movie Id numbers " + movieId + " aren’t unique");
-//        }
 
         if (usedMovieIds.contains(GetNumberofId(movieTitle,movieId))) {
             throw new RuntimeException(

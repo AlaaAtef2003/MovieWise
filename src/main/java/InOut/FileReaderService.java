@@ -50,7 +50,7 @@ public class FileReaderService {
 //        System.out.println(x);
       //  System.out.println(titleIdLine + parts.length);
         if (parts.length != 2) {
-            throw new IllegalArgumentException("Invalid movie line format: " + titleIdLine);
+            throw new IllegalArgumentException("Invalid movie line format" );
         }
 
         String title = parts[0].trim();
@@ -98,7 +98,7 @@ public class FileReaderService {
         String[] parts = nameIdLine.split("[،，,]\\s*");
        // System.out.println(parts[0]+ "       "+ parts[1]);
         if (parts.length != 2) {
-            throw new IllegalArgumentException("Invalid user line format: " + nameIdLine);
+            throw new IllegalArgumentException("Invalid user line format" );
         }
         if (parts[0].startsWith(" "))throw new RuntimeException("ERROR: User Name " +  parts[0] + " is wrong");
 
