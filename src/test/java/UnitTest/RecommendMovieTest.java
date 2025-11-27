@@ -41,7 +41,7 @@ class RecommendMovieTest {
     }
     @Test
 
-    void testMoviesHappyScenario() throws Exception {
+    void testHappyScenario() throws Exception {
         MovieFile.write("""
                 Avatar,A156\r
                 SciFi,Adventure\r
@@ -64,7 +64,7 @@ class RecommendMovieTest {
 
 
         UserFile.write("""
-                Ahmed Ali,12345678\r
+                Ahmed Ali,12345678c\r
                 JW123,A567\r
                 \r
                 sara Mostafa,87654322\r
@@ -336,7 +336,7 @@ class RecommendMovieTest {
         }
         List<String> lines = Files.readAllLines(Paths.get(recommendFiles));
         assertEquals(1, lines.size());
-        assertEquals("ERROR: Movie Id numbers JW158 aren’t unique",lines.getFirst());//bug:it's not line 1  it's 6
+        assertEquals("ERROR: Movie Id numbers JW158 aren’t unique",lines.getFirst());
 
 
 
@@ -397,7 +397,7 @@ class RecommendMovieTest {
         }
         List<String> lines = Files.readAllLines(Paths.get(recommendFiles));
         assertEquals(1, lines.size());
-        assertEquals("ERROR: Movie Id letters PW151 are wrong",lines.get(0));//bug:it's not line 1  it's 6
+        assertEquals("ERROR: Movie Id letters PW151 are wrong",lines.getFirst());
 
 
 
@@ -459,7 +459,76 @@ class RecommendMovieTest {
         }
         List<String> lines = Files.readAllLines(Paths.get(recommendFiles));
         assertEquals(1, lines.size());
-        assertEquals("ERROR: Movie Title john wick is wrong",lines.get(0));//bug:it's not line 1  it's 6
+        assertEquals("ERROR: Movie Title john wick is wrong",lines.getFirst());
+
+
+
+    }
+
+
+    @Test
+    void testUsersNegativeScenarioWrongNameFormatSpaceAtTheBegginning() throws Exception {
+
+
+        MovieFile.write("""
+                Avatar,A156\r
+                SciFi,Adventure\r
+                \r
+                John Wick,JW123\r
+                Action,Crime\r
+                \r
+                \r
+                The Conjuring,TC133\r
+                Horror,Thriller\r
+                \r
+                \r
+                Iron Man,IM902\r
+                Action,SciFi,Animation,Family\r
+                \r
+                \r
+                Frozen,F314\r
+                Animation,Family\r
+                """);
+
+
+        //name starting with a space (Omar)
+        UserFile.write("""
+                Ahmed Ali,12345678\r
+                JW123,A567\r
+                \r
+                sara Mostafa,87654322\r
+                TC489,IM902\r
+                \r
+                 Omar Khaled,11223344\r
+                F314\r
+                \r
+                Mona Youssef,99887766\r
+                JW123,TC489,F314\r
+                """);
+        MovieFile.close();
+        UserFile.close();
+        try {
+            List<Movies> moviesInput = fs.readMovies(films);
+            List<Users> usersInput = fs.readUsers(UsersFiles);
+            fws.writeRecommendations(recommendFiles, usersInput, moviesInput, rm);
+
+        }
+        catch (Exception e) {
+
+            try {
+                FileWriter writer = new FileWriter(recommendFiles);
+                writer.write(e.getMessage());
+                writer.close();
+            } catch (Exception ex) {
+                //couldn't write the error in the file
+            }
+
+        }
+        List<String> lines = Files.readAllLines(Paths.get(recommendFiles));
+        assertEquals(1, lines.size());
+        assertEquals("Error reading users: ERROR: User Name  Omar Khaled is wrong",lines.getFirst());
+
+
 
 
 
@@ -468,6 +537,671 @@ class RecommendMovieTest {
 
 
 
+
+    @Test
+    void testUsersNegativeScenarioWrongNameFormatUserNameStartWithNumber() throws Exception {
+
+
+        MovieFile.write("""
+                Avatar,A156\r
+                SciFi,Adventure\r
+                \r
+                John Wick,JW123\r
+                Action,Crime\r
+                \r
+                \r
+                The Conjuring,TC133\r
+                Horror,Thriller\r
+                \r
+                \r
+                Iron Man,IM902\r
+                Action,SciFi,Animation,Family\r
+                \r
+                \r
+                Frozen,F314\r
+                Animation,Family\r
+                """);
+
+
+        //name starting with a number (Omar)
+        UserFile.write("""
+                Ahmed Ali,12345678\r
+                JW123,A567\r
+                \r
+                sara Mostafa,87654322\r
+                TC489,IM902\r
+                \r
+                1mar Khaled,11223344\r
+                F314\r
+                \r
+                Mona Youssef,99887766\r
+                JW123,TC489,F314\r
+                """);
+        MovieFile.close();
+        UserFile.close();
+        try {
+            List<Movies> moviesInput = fs.readMovies(films);
+            List<Users> usersInput = fs.readUsers(UsersFiles);
+            fws.writeRecommendations(recommendFiles, usersInput, moviesInput, rm);
+
+        }
+        catch (Exception e) {
+
+            try {
+                FileWriter writer = new FileWriter(recommendFiles);
+                writer.write(e.getMessage());
+                writer.close();
+            } catch (Exception ex) {
+                //couldn't write the error in the file
+            }
+
+        }
+        List<String> lines = Files.readAllLines(Paths.get(recommendFiles));
+        assertEquals(1, lines.size());
+        assertEquals("Error reading users: ERROR: User Name 1mar Khaled is wrong",lines.getFirst());
+
+
+    }
+
+
+
+
+    @Test
+    void testUsersNegativeScenarioWrongNameFormatUserNameStartWithSpecialCharacter() throws Exception {
+
+
+        MovieFile.write("""
+                Avatar,A156\r
+                SciFi,Adventure\r
+                \r
+                John Wick,JW123\r
+                Action,Crime\r
+                \r
+                \r
+                The Conjuring,TC133\r
+                Horror,Thriller\r
+                \r
+                \r
+                Iron Man,IM902\r
+                Action,SciFi,Animation,Family\r
+                \r
+                \r
+                Frozen,F314\r
+                Animation,Family\r
+                """);
+
+
+        //name starting with a special character (Mona)
+        UserFile.write("""
+                Ahmed Ali,12345678\r
+                JW123,A567\r
+                \r
+                sara Mostafa,87654322\r
+                TC489,IM902\r
+                \r
+                Omar Khaled,11223344\r
+                F314\r
+                \r
+                $Mona Youssef,99887766\r
+                JW123,TC489,F314\r
+                """);
+        MovieFile.close();
+        UserFile.close();
+        try {
+            List<Movies> moviesInput = fs.readMovies(films);
+            List<Users> usersInput = fs.readUsers(UsersFiles);
+            fws.writeRecommendations(recommendFiles, usersInput, moviesInput, rm);
+
+        }
+        catch (Exception e) {
+
+            try {
+                FileWriter writer = new FileWriter(recommendFiles);
+                writer.write(e.getMessage());
+                writer.close();
+            } catch (Exception ex) {
+                //couldn't write the error in the file
+            }
+
+        }
+        List<String> lines = Files.readAllLines(Paths.get(recommendFiles));
+        assertEquals(1, lines.size());
+        assertEquals("Error reading users: ERROR: User Name $Mona Youssef is wrong",lines.getFirst());
+
+
+    }
+
+    @Test
+    void testUsersNegativeScenarioWrongId9Numbers() throws Exception {
+
+
+        MovieFile.write("""
+                Avatar,A156\r
+                SciFi,Adventure\r
+                \r
+                John Wick,JW123\r
+                Action,Crime\r
+                \r
+                \r
+                The Conjuring,TC133\r
+                Horror,Thriller\r
+                \r
+                \r
+                Iron Man,IM902\r
+                Action,SciFi,Animation,Family\r
+                \r
+                \r
+                Frozen,F314\r
+                Animation,Family\r
+                """);
+
+
+        //id 9 numbers with no character (Ahmed)
+        UserFile.write("""
+                Ahmed Ali,123456789\r
+                JW123,A567\r
+                \r
+                sara Mostafa,87654322\r
+                TC489,IM902\r
+                \r
+                Omar Khaled,11223344\r
+                F314\r
+                \r
+                Mona Youssef,99887766\r
+                JW123,TC489,F314\r
+                """);
+        MovieFile.close();
+        UserFile.close();
+        try {
+            List<Movies> moviesInput = fs.readMovies(films);
+            List<Users> usersInput = fs.readUsers(UsersFiles);
+            fws.writeRecommendations(recommendFiles, usersInput, moviesInput, rm);
+
+        }
+        catch (Exception e) {
+
+            try {
+                FileWriter writer = new FileWriter(recommendFiles);
+                writer.write(e.getMessage());
+                writer.close();
+            } catch (Exception ex) {
+                //couldn't write the error in the file
+            }
+
+        }
+        List<String> lines = Files.readAllLines(Paths.get(recommendFiles));
+        assertEquals(1, lines.size());
+        assertEquals("Error reading users: ERROR: User Id 123456789 is wrong",lines.getFirst());
+
+
+    }
+
+
+
+
+    @Test
+    void testUsersNegativeScenarioWrongId8Numbers() throws Exception {
+
+
+        MovieFile.write("""
+                Avatar,A156\r
+                SciFi,Adventure\r
+                \r
+                John Wick,JW123\r
+                Action,Crime\r
+                \r
+                \r
+                The Conjuring,TC133\r
+                Horror,Thriller\r
+                \r
+                \r
+                Iron Man,IM902\r
+                Action,SciFi,Animation,Family\r
+                \r
+                \r
+                Frozen,F314\r
+                Animation,Family\r
+                """);
+
+
+        //id 7 numbers with no character (sara)
+        UserFile.write("""
+                Ahmed Ali,12345678\r
+                JW123,A567\r
+                \r
+                sara Mostafa,8765432\r
+                TC489,IM902\r
+                \r
+                Omar Khaled,11223344\r
+                F314\r
+                \r
+                Mona Youssef,99887766\r
+                JW123,TC489,F314\r
+                """);
+        MovieFile.close();
+        UserFile.close();
+        try {
+            List<Movies> moviesInput = fs.readMovies(films);
+            List<Users> usersInput = fs.readUsers(UsersFiles);
+            fws.writeRecommendations(recommendFiles, usersInput, moviesInput, rm);
+
+        }
+        catch (Exception e) {
+
+            try {
+                FileWriter writer = new FileWriter(recommendFiles);
+                writer.write(e.getMessage());
+                writer.close();
+            } catch (Exception ex) {
+                //couldn't write the error in the file
+            }
+
+        }
+        List<String> lines = Files.readAllLines(Paths.get(recommendFiles));
+        assertEquals(1, lines.size());
+        assertEquals("Error reading users: ERROR: User Id 8765432 is wrong",lines.getFirst());
+
+
+    }
+
+
+    @Test
+    void testUsersNegativeScenarioWrongIdCharacterInTheMiddle() throws Exception {
+
+
+        MovieFile.write("""
+                Avatar,A156\r
+                SciFi,Adventure\r
+                \r
+                John Wick,JW123\r
+                Action,Crime\r
+                \r
+                \r
+                The Conjuring,TC133\r
+                Horror,Thriller\r
+                \r
+                \r
+                Iron Man,IM902\r
+                Action,SciFi,Animation,Family\r
+                \r
+                \r
+                Frozen,F314\r
+                Animation,Family\r
+                """);
+
+
+        //id 7 numbers with no character (Mona)
+        UserFile.write("""
+                Ahmed Ali,12345678\r
+                JW123,A567\r
+                \r
+                sara Mostafa,87654322\r
+                TC489,IM902\r
+                \r
+                Omar Khaled,11223344\r
+                F314\r
+                \r
+                Mona Youssef,9988c766\r
+                JW123,TC489,F314\r
+                """);
+        MovieFile.close();
+        UserFile.close();
+        try {
+            List<Movies> moviesInput = fs.readMovies(films);
+            List<Users> usersInput = fs.readUsers(UsersFiles);
+            fws.writeRecommendations(recommendFiles, usersInput, moviesInput, rm);
+
+        }
+        catch (Exception e) {
+
+            try {
+                FileWriter writer = new FileWriter(recommendFiles);
+                writer.write(e.getMessage());
+                writer.close();
+            } catch (Exception ex) {
+                //couldn't write the error in the file
+            }
+
+        }
+        List<String> lines = Files.readAllLines(Paths.get(recommendFiles));
+        assertEquals(1, lines.size());
+        assertEquals("Error reading users: ERROR: User Id 9988c766 is wrong",lines.getFirst());
+
+
+    }
+
+
+
+
+
+
+    @Test
+    void testUsersNegativeScenarioWrongId8Numbersand2Characters() throws Exception {
+
+
+        MovieFile.write("""
+                Avatar,A156\r
+                SciFi,Adventure\r
+                \r
+                John Wick,JW123\r
+                Action,Crime\r
+                \r
+                \r
+                The Conjuring,TC133\r
+                Horror,Thriller\r
+                \r
+                \r
+                Iron Man,IM902\r
+                Action,SciFi,Animation,Family\r
+                \r
+                \r
+                Frozen,F314\r
+                Animation,Family\r
+                """);
+
+
+        //id 7 numbers with no character (Ahmed)
+        UserFile.write("""
+                Ahmed Ali,12345678cc\r
+                JW123,A567\r
+                \r
+                sara Mostafa,87654322\r
+                TC489,IM902\r
+                \r
+                Omar Khaled,11223344\r
+                F314\r
+                \r
+                Mona Youssef,9988c766\r
+                JW123,TC489,F314\r
+                """);
+        MovieFile.close();
+        UserFile.close();
+        try {
+            List<Movies> moviesInput = fs.readMovies(films);
+            List<Users> usersInput = fs.readUsers(UsersFiles);
+            fws.writeRecommendations(recommendFiles, usersInput, moviesInput, rm);
+
+        }
+        catch (Exception e) {
+
+            try {
+                FileWriter writer = new FileWriter(recommendFiles);
+                writer.write(e.getMessage());
+                writer.close();
+            } catch (Exception ex) {
+                //couldn't write the error in the file
+            }
+
+        }
+        List<String> lines = Files.readAllLines(Paths.get(recommendFiles));
+        assertEquals(1, lines.size());
+        assertEquals("Error reading users: ERROR: User Id 12345678cc is wrong",lines.getFirst());
+
+
+    }
+
+
+
+    @Test
+    void testUsersNegativeScenarioWrongId8Numbersand1SpecialCharacter() throws Exception {
+
+
+        MovieFile.write("""
+                Avatar,A156\r
+                SciFi,Adventure\r
+                \r
+                John Wick,JW123\r
+                Action,Crime\r
+                \r
+                \r
+                The Conjuring,TC133\r
+                Horror,Thriller\r
+                \r
+                \r
+                Iron Man,IM902\r
+                Action,SciFi,Animation,Family\r
+                \r
+                \r
+                Frozen,F314\r
+                Animation,Family\r
+                """);
+
+
+        //id 7 numbers with no character (Ahmed)
+        UserFile.write("""
+                Ahmed Ali,12345678&\r
+                JW123,A567\r
+                \r
+                sara Mostafa,87654322\r
+                TC489,IM902\r
+                \r
+                Omar Khaled,11223344\r
+                F314\r
+                \r
+                Mona Youssef,9988c766\r
+                JW123,TC489,F314\r
+                """);
+        MovieFile.close();
+        UserFile.close();
+        try {
+            List<Movies> moviesInput = fs.readMovies(films);
+            List<Users> usersInput = fs.readUsers(UsersFiles);
+            fws.writeRecommendations(recommendFiles, usersInput, moviesInput, rm);
+
+        }
+        catch (Exception e) {
+
+            try {
+                FileWriter writer = new FileWriter(recommendFiles);
+                writer.write(e.getMessage());
+                writer.close();
+            } catch (Exception ex) {
+                //couldn't write the error in the file
+            }
+
+        }
+        List<String> lines = Files.readAllLines(Paths.get(recommendFiles));
+        assertEquals(1, lines.size());
+        assertEquals("Error reading users: ERROR: User Id 12345678& is wrong",lines.getFirst());
+
+
+    }
+
+
+    @Test
+    void testUsersNegativeScenarioNoCommaBetweenNameAndId() throws Exception {
+
+
+        MovieFile.write("""
+                Avatar,A156\r
+                SciFi,Adventure\r
+                \r
+                John Wick,JW123\r
+                Action,Crime\r
+                \r
+                \r
+                The Conjuring,TC133\r
+                Horror,Thriller\r
+                \r
+                \r
+                Iron Man,IM902\r
+                Action,SciFi,Animation,Family\r
+                \r
+                \r
+                Frozen,F314\r
+                Animation,Family\r
+                """);
+
+
+        //saraMostafa876.... no comma
+        UserFile.write("""
+                Ahmed Ali,12345678\r
+                JW123,A567\r
+                \r
+                sara Mostafa87654322\r
+                TC489,IM902\r
+                \r
+                Omar Khaled,11223344\r
+                F314\r
+                \r
+                Mona Youssef,9988c766\r
+                JW123,TC489,F314\r
+                """);
+        MovieFile.close();
+        UserFile.close();
+        try {
+            List<Movies> moviesInput = fs.readMovies(films);
+            List<Users> usersInput = fs.readUsers(UsersFiles);
+            fws.writeRecommendations(recommendFiles, usersInput, moviesInput, rm);
+
+        }
+        catch (Exception e) {
+
+            try {
+                FileWriter writer = new FileWriter(recommendFiles);
+                writer.write(e.getMessage());
+                writer.close();
+            } catch (Exception ex) {
+                //couldn't write the error in the file
+            }
+
+        }
+        List<String> lines = Files.readAllLines(Paths.get(recommendFiles));
+        assertEquals(1, lines.size());
+        assertEquals("Error reading users: Invalid user line format",lines.getFirst());
+
+
+    }
+
+    @Test
+    void testUsersNegativeScenarioSpaceInTheId() throws Exception {
+
+
+        MovieFile.write("""
+                Avatar,A156\r
+                SciFi,Adventure\r
+                \r
+                John Wick,JW123\r
+                Action,Crime\r
+                \r
+                \r
+                The Conjuring,TC133\r
+                Horror,Thriller\r
+                \r
+                \r
+                Iron Man,IM902\r
+                Action,SciFi,Animation,Family\r
+                \r
+                \r
+                Frozen,F314\r
+                Animation,Family\r
+                """);
+
+
+        //Space in The Id (Mona)
+        UserFile.write("""
+                Ahmed Ali,12345678\r
+                JW123,A567\r
+                \r
+                sara Mostafa,87654322\r
+                TC489,IM902\r
+                \r
+                Omar Khaled,11223344\r
+                F314\r
+                \r
+                Mona Youssef,9988 766\r
+                JW123,TC489,F314\r
+                """);
+        MovieFile.close();
+        UserFile.close();
+        try {
+            List<Movies> moviesInput = fs.readMovies(films);
+            List<Users> usersInput = fs.readUsers(UsersFiles);
+            fws.writeRecommendations(recommendFiles, usersInput, moviesInput, rm);
+
+        }
+        catch (Exception e) {
+
+            try {
+                FileWriter writer = new FileWriter(recommendFiles);
+                writer.write(e.getMessage());
+                writer.close();
+            } catch (Exception ex) {
+                //couldn't write the error in the file
+            }
+
+        }
+        List<String> lines = Files.readAllLines(Paths.get(recommendFiles));
+        assertEquals(1, lines.size());
+        assertEquals("Error reading users: ERROR: User Id 9988 766 is wrong",lines.getFirst());
+
+
+    }
+
+    @Test
+    void testUsersMultipleErrorsGetsTheFirst() throws Exception {
+
+
+        MovieFile.write("""
+                Avatar,A156\r
+                SciFi,Adventure\r
+                \r
+                John Wick,JW123\r
+                Action,Crime\r
+                \r
+                \r
+                The Conjuring,TC133\r
+                Horror,Thriller\r
+                \r
+                \r
+                Iron Man,IM902\r
+                Action,SciFi,Animation,Family\r
+                \r
+                \r
+                Frozen,F314\r
+                Animation,Family\r
+                """);
+
+
+        //saraMostafa876.... no comma and multiple letters at ahmed id
+        UserFile.write("""
+                Ahmed Ali,12345678cc\r
+                JW123,A567\r
+                \r
+                sara Mostafa,87654322\r
+                TC489,IM902\r
+                \r
+                Omar Khaled,11223344\r
+                F314\r
+                \r
+                Mona Youssef,9988c766\r
+                JW123,TC489,F314\r
+                """);
+        MovieFile.close();
+        UserFile.close();
+        try {
+            List<Movies> moviesInput = fs.readMovies(films);
+            List<Users> usersInput = fs.readUsers(UsersFiles);
+            fws.writeRecommendations(recommendFiles, usersInput, moviesInput, rm);
+
+        }
+        catch (Exception e) {
+
+            try {
+                FileWriter writer = new FileWriter(recommendFiles);
+                writer.write(e.getMessage());
+                writer.close();
+            } catch (Exception ex) {
+                //couldn't write the error in the file
+            }
+
+        }
+        List<String> lines = Files.readAllLines(Paths.get(recommendFiles));
+        assertEquals(1, lines.size());
+        assertEquals("Error reading users: ERROR: User Id 12345678cc is wrong",lines.getFirst());
+
+
+    }
 
     @AfterEach
     public void cleanup() throws IOException {
