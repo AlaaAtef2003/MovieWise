@@ -70,6 +70,41 @@ Recommended Movie 1,Recommended Movie 2,Recommended Movie 3
 
 ---
 
+
+## 🗂️ Project Structure
+```
+MovieWise/
+│
+├─ src/
+│   ├─ main/
+│   │   └─ java/
+│   │       ├─ InOut/
+│   │       │    ├─ FileReaderService.java
+│   │       │    └─ FileWriterService.java
+│   │       │
+│   │       ├─ Models/
+│   │       │    ├─ Movies.java
+│   │       │    ├─ Recommend.java
+│   │       │    └─ Users.java
+│   │       │
+│   │       ├─ Services/
+│   │       │    ├─ InputValidator.java
+│   │       │    ├─ OutputValidator.java
+│   │       │    └─ RecommendMovies.java
+│   │       │
+│   │       └─ org/Main/
+│   │            └─ Main.java
+│   │
+│   └─ test/
+│       └─ java/
+│           └─ UnitTest/
+│                ├─ MovieTest.java
+│                ├─ RecommendMovieTest.java
+│                └─ UserTest.java
+│
+└─ README.md
+```
+---
 ## ▶️ How to Run
 
 1. Place `movies.txt` and `users.txt` in the project root folder.
@@ -78,3 +113,4 @@ Recommended Movie 1,Recommended Movie 2,Recommended Movie 3
 
 
 ### **movies.txt**
+
