@@ -1,17 +1,17 @@
 package Services;
 
-import Models.Movies;
-import Models.Users;
+import Models.Movie;
+import Models.User;
 
 import java.util.HashSet;
 import java.util.List;
 
 public class OutputValidator {
 
-    private final List<Users> users;
-    private final List<Movies> movies;
+    private final List<User> users;
+    private final List<Movie> movies;
 
-    public OutputValidator(List<Users> users, List<Movies> movies) {
+    public OutputValidator(List<User> users, List<Movie> movies) {
         this.users = users;
         this.movies = movies;
     }
@@ -73,7 +73,7 @@ public class OutputValidator {
         HashSet<String> expectedGenres = new HashSet<>();
 
         for (String likedId : likedByuser) {
-            Movies likedMovie = movies.stream()
+            Movie likedMovie = movies.stream()
                     .filter(m -> m.getMovieId().equals(likedId))
                     .findFirst()
                     .orElse(null);
@@ -108,7 +108,7 @@ public class OutputValidator {
             seen.add(cleanTitle);
 
             // 3) EXISTENCE CHECK (must exist in movies database)
-            Movies movie = movies.stream()
+            Movie movie = movies.stream()
                     .filter(m -> m.getTitle().equals(cleanTitle))
                     .findFirst()
                     .orElse(null);

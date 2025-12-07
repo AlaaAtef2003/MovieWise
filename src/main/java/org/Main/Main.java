@@ -2,11 +2,10 @@ package org.Main;
 
 
 
-import Models.Movies;
-import Models.Users;
+import Models.Movie;
+import Models.User;
 import InOut.FileReaderService;
 import InOut.FileWriterService;
-import Services.OutputValidator;
 import Services. recommendMovies;
 
 import java.io.FileWriter;
@@ -30,12 +29,12 @@ public class Main {
             // Read & validate movies file
             // ------------------------------
            // System.out.println("movies ");
-            List<Movies> movies = fileReader.readMovies(moviesFile);
+            List<Movie> movies = fileReader.readMovies(moviesFile);
           //  System.out.println("movies true");
             // ------------------------------
             // Read & validate users file
             // ------------------------------
-            List<Users> users = fileReader.readUsers(usersFile);
+            List<User> users = fileReader.readUsers(usersFile);
            // System.out.println("users true");
             // ------------------------------
             // If everything is valid → write recommendations

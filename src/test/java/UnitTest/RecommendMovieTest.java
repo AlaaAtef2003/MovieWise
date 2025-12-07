@@ -16,8 +16,8 @@ import org.junit.jupiter.api.Test;
 
 import InOut.FileReaderService;
 import InOut.FileWriterService;
-import Models.Movies;
-import Models.Users;
+import Models.Movie;
+import Models.User;
 import Services.recommendMovies;
 
 class RecommendMovieTest {
@@ -78,9 +78,9 @@ class RecommendMovieTest {
                 """);
         MovieFile.close();
         UserFile.close();
-        List<Movies> moviesInput = fs.readMovies(films);
-        List<Users> usersInput = fs.readUsers(UsersFiles);
-        fws.writeRecommendations(recommendFiles, usersInput, moviesInput, rm);
+        List<Movie> movieInput = fs.readMovies(films);
+        List<User> userInput = fs.readUsers(UsersFiles);
+        fws.writeRecommendations(recommendFiles, userInput, movieInput, rm);
         List<String> lines = Files.readAllLines(Paths.get(recommendFiles));
 
         assertEquals("John Wick,Iron Man", lines.get(1));
@@ -133,9 +133,9 @@ class RecommendMovieTest {
 //		});
 //		assertEquals("ERROR: Movie Id letters A15 are wrong",ex.getMessage());
         try {
-            List<Movies> moviesInput = fs.readMovies(films);
-            List<Users> usersInput = fs.readUsers(UsersFiles);
-            fws.writeRecommendations(recommendFiles, usersInput, moviesInput, rm);
+            List<Movie> movieInput = fs.readMovies(films);
+            List<User> userInput = fs.readUsers(UsersFiles);
+            fws.writeRecommendations(recommendFiles, userInput, movieInput, rm);
 
         }
         catch (Exception e) {
@@ -199,9 +199,9 @@ class RecommendMovieTest {
 //		});
 //		assertEquals("ERROR: Movie Id letters A15 are wrong",ex.getMessage());
         try {
-            List<Movies> moviesInput = fs.readMovies(films);
-            List<Users> usersInput = fs.readUsers(UsersFiles);
-            fws.writeRecommendations(recommendFiles, usersInput, moviesInput, rm);
+            List<Movie> movieInput = fs.readMovies(films);
+            List<User> userInput = fs.readUsers(UsersFiles);
+            fws.writeRecommendations(recommendFiles, userInput, movieInput, rm);
 
         }
         catch (Exception e) {
@@ -261,9 +261,9 @@ class RecommendMovieTest {
         UserFile.close();
 
         try {
-            List<Movies> moviesInput = fs.readMovies(films);
-            List<Users> usersInput = fs.readUsers(UsersFiles);
-            fws.writeRecommendations(recommendFiles, usersInput, moviesInput, rm);
+            List<Movie> movieInput = fs.readMovies(films);
+            List<User> userInput = fs.readUsers(UsersFiles);
+            fws.writeRecommendations(recommendFiles, userInput, movieInput, rm);
 
         }
         catch (Exception e) {
@@ -318,9 +318,9 @@ class RecommendMovieTest {
         UserFile.close();
 
         try {
-            List<Movies> moviesInput = fs.readMovies(films);
-            List<Users> usersInput = fs.readUsers(UsersFiles);
-            fws.writeRecommendations(recommendFiles, usersInput, moviesInput, rm);
+            List<Movie> movieInput = fs.readMovies(films);
+            List<User> userInput = fs.readUsers(UsersFiles);
+            fws.writeRecommendations(recommendFiles, userInput, movieInput, rm);
 
         }
         catch (Exception e) {
@@ -379,9 +379,9 @@ class RecommendMovieTest {
 //		});
 //		assertEquals("ERROR: Movie Id letters A15 are wrong",ex.getMessage());
         try {
-            List<Movies> moviesInput = fs.readMovies(films);
-            List<Users> usersInput = fs.readUsers(UsersFiles);
-            fws.writeRecommendations(recommendFiles, usersInput, moviesInput, rm);
+            List<Movie> movieInput = fs.readMovies(films);
+            List<User> userInput = fs.readUsers(UsersFiles);
+            fws.writeRecommendations(recommendFiles, userInput, movieInput, rm);
 
         }
         catch (Exception e) {
@@ -441,9 +441,9 @@ class RecommendMovieTest {
 //		});
 //		assertEquals("ERROR: Movie Id letters A15 are wrong",ex.getMessage());
         try {
-            List<Movies> moviesInput = fs.readMovies(films);
-            List<Users> usersInput = fs.readUsers(UsersFiles);
-            fws.writeRecommendations(recommendFiles, usersInput, moviesInput, rm);
+            List<Movie> movieInput = fs.readMovies(films);
+            List<User> userInput = fs.readUsers(UsersFiles);
+            fws.writeRecommendations(recommendFiles, userInput, movieInput, rm);
 
         }
         catch (Exception e) {
@@ -508,9 +508,9 @@ class RecommendMovieTest {
         MovieFile.close();
         UserFile.close();
         try {
-            List<Movies> moviesInput = fs.readMovies(films);
-            List<Users> usersInput = fs.readUsers(UsersFiles);
-            fws.writeRecommendations(recommendFiles, usersInput, moviesInput, rm);
+            List<Movie> movieInput = fs.readMovies(films);
+            List<User> userInput = fs.readUsers(UsersFiles);
+            fws.writeRecommendations(recommendFiles, userInput, movieInput, rm);
 
         }
         catch (Exception e) {
@@ -580,9 +580,9 @@ class RecommendMovieTest {
         MovieFile.close();
         UserFile.close();
         try {
-            List<Movies> moviesInput = fs.readMovies(films);
-            List<Users> usersInput = fs.readUsers(UsersFiles);
-            fws.writeRecommendations(recommendFiles, usersInput, moviesInput, rm);
+            List<Movie> movieInput = fs.readMovies(films);
+            List<User> userInput = fs.readUsers(UsersFiles);
+            fws.writeRecommendations(recommendFiles, userInput, movieInput, rm);
 
         }
         catch (Exception e) {
@@ -648,9 +648,9 @@ class RecommendMovieTest {
         MovieFile.close();
         UserFile.close();
         try {
-            List<Movies> moviesInput = fs.readMovies(films);
-            List<Users> usersInput = fs.readUsers(UsersFiles);
-            fws.writeRecommendations(recommendFiles, usersInput, moviesInput, rm);
+            List<Movie> movieInput = fs.readMovies(films);
+            List<User> userInput = fs.readUsers(UsersFiles);
+            fws.writeRecommendations(recommendFiles, userInput, movieInput, rm);
 
         }
         catch (Exception e) {
@@ -713,9 +713,9 @@ class RecommendMovieTest {
         MovieFile.close();
         UserFile.close();
         try {
-            List<Movies> moviesInput = fs.readMovies(films);
-            List<Users> usersInput = fs.readUsers(UsersFiles);
-            fws.writeRecommendations(recommendFiles, usersInput, moviesInput, rm);
+            List<Movie> movieInput = fs.readMovies(films);
+            List<User> userInput = fs.readUsers(UsersFiles);
+            fws.writeRecommendations(recommendFiles, userInput, movieInput, rm);
 
         }
         catch (Exception e) {
@@ -781,9 +781,9 @@ class RecommendMovieTest {
         MovieFile.close();
         UserFile.close();
         try {
-            List<Movies> moviesInput = fs.readMovies(films);
-            List<Users> usersInput = fs.readUsers(UsersFiles);
-            fws.writeRecommendations(recommendFiles, usersInput, moviesInput, rm);
+            List<Movie> movieInput = fs.readMovies(films);
+            List<User> userInput = fs.readUsers(UsersFiles);
+            fws.writeRecommendations(recommendFiles, userInput, movieInput, rm);
 
         }
         catch (Exception e) {
@@ -847,9 +847,9 @@ class RecommendMovieTest {
         MovieFile.close();
         UserFile.close();
         try {
-            List<Movies> moviesInput = fs.readMovies(films);
-            List<Users> usersInput = fs.readUsers(UsersFiles);
-            fws.writeRecommendations(recommendFiles, usersInput, moviesInput, rm);
+            List<Movie> movieInput = fs.readMovies(films);
+            List<User> userInput = fs.readUsers(UsersFiles);
+            fws.writeRecommendations(recommendFiles, userInput, movieInput, rm);
 
         }
         catch (Exception e) {
@@ -917,9 +917,9 @@ class RecommendMovieTest {
         MovieFile.close();
         UserFile.close();
         try {
-            List<Movies> moviesInput = fs.readMovies(films);
-            List<Users> usersInput = fs.readUsers(UsersFiles);
-            fws.writeRecommendations(recommendFiles, usersInput, moviesInput, rm);
+            List<Movie> movieInput = fs.readMovies(films);
+            List<User> userInput = fs.readUsers(UsersFiles);
+            fws.writeRecommendations(recommendFiles, userInput, movieInput, rm);
 
         }
         catch (Exception e) {
@@ -984,9 +984,9 @@ class RecommendMovieTest {
         MovieFile.close();
         UserFile.close();
         try {
-            List<Movies> moviesInput = fs.readMovies(films);
-            List<Users> usersInput = fs.readUsers(UsersFiles);
-            fws.writeRecommendations(recommendFiles, usersInput, moviesInput, rm);
+            List<Movie> movieInput = fs.readMovies(films);
+            List<User> userInput = fs.readUsers(UsersFiles);
+            fws.writeRecommendations(recommendFiles, userInput, movieInput, rm);
 
         }
         catch (Exception e) {
@@ -1050,9 +1050,9 @@ class RecommendMovieTest {
         MovieFile.close();
         UserFile.close();
         try {
-            List<Movies> moviesInput = fs.readMovies(films);
-            List<Users> usersInput = fs.readUsers(UsersFiles);
-            fws.writeRecommendations(recommendFiles, usersInput, moviesInput, rm);
+            List<Movie> movieInput = fs.readMovies(films);
+            List<User> userInput = fs.readUsers(UsersFiles);
+            fws.writeRecommendations(recommendFiles, userInput, movieInput, rm);
 
         }
         catch (Exception e) {
@@ -1115,9 +1115,9 @@ class RecommendMovieTest {
         MovieFile.close();
         UserFile.close();
         try {
-            List<Movies> moviesInput = fs.readMovies(films);
-            List<Users> usersInput = fs.readUsers(UsersFiles);
-            fws.writeRecommendations(recommendFiles, usersInput, moviesInput, rm);
+            List<Movie> movieInput = fs.readMovies(films);
+            List<User> userInput = fs.readUsers(UsersFiles);
+            fws.writeRecommendations(recommendFiles, userInput, movieInput, rm);
 
         }
         catch (Exception e) {
@@ -1180,9 +1180,9 @@ class RecommendMovieTest {
         MovieFile.close();
         UserFile.close();
         try {
-            List<Movies> moviesInput = fs.readMovies(films);
-            List<Users> usersInput = fs.readUsers(UsersFiles);
-            fws.writeRecommendations(recommendFiles, usersInput, moviesInput, rm);
+            List<Movie> movieInput = fs.readMovies(films);
+            List<User> userInput = fs.readUsers(UsersFiles);
+            fws.writeRecommendations(recommendFiles, userInput, movieInput, rm);
 
         }
         catch (Exception e) {

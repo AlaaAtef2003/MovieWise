@@ -1,7 +1,7 @@
 package InOut;
 
-import Models.Movies;
-import Models.Users;
+import Models.Movie;
+import Models.User;
 import Services.InputValidator;
 
 import java.io.BufferedReader;
@@ -15,8 +15,8 @@ public class FileReaderService {
     // --------------------------
     // Read Movies
     // --------------------------
-    public List<Movies> readMovies(String filePath) throws Exception {
-        List<Movies> movies = new ArrayList<>();
+    public List<Movie> readMovies(String filePath) throws Exception {
+        List<Movie> movies = new ArrayList<>();
         Set<String> usedMovieIds = new HashSet<>();
 
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
@@ -29,7 +29,7 @@ public class FileReaderService {
                 String genresLine = reader.readLine();  // next line must exist
                 if (genresLine == null) break;
 
-                Movies movie = parseMovie(titleIdLine, genresLine);
+                Movie movie = parseMovie(titleIdLine, genresLine);
 //                String string = movie.toString();
 //                System.out.println(string);
                 validator.validateMovie(movie, usedMovieIds);
@@ -44,7 +44,7 @@ public class FileReaderService {
         return movies;
     }
 
-    private Movies parseMovie(String titleIdLine, String genresLine) {
+    private Movie parseMovie(String titleIdLine, String genresLine) {
 
         String[] parts = titleIdLine.split("[،，,]\\s*");
 //        System.out.println(x);
@@ -57,17 +57,17 @@ public class FileReaderService {
         String id = parts[1].trim();
 
         List<String> genres = Arrays.asList(genresLine.split(",\\s*"));
-        Movies m = new Movies(title, id, genres);
+        Movie m = new Movie(title, id, genres);
 //        String string = m.toString();
 //        System.out.println(string);
-        return new Movies(title, id, genres);
+        return new Movie(title, id, genres);
     }
 
     // --------------------------
     // Read Users
     // --------------------------
-    public List<Users> readUsers(String filePath) throws Exception {
-        List<Users> users = new ArrayList<>();
+    public List<User> readUsers(String filePath) throws Exception {
+        List<User> users = new ArrayList<>();
         Set<String> usedUserIds = new HashSet<>();
 
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
@@ -83,7 +83,7 @@ public class FileReaderService {
                 String likedMoviesLine = reader.readLine();
                 if (likedMoviesLine == null) break;
 
-                Users user = parseUser(nameIdLine, likedMoviesLine);
+                User user = parseUser(nameIdLine, likedMoviesLine);
                 validator.validateUser(user, usedUserIds);
                 users.add(user);
             }
@@ -94,7 +94,7 @@ public class FileReaderService {
         return users;
     }
 
-    private Users parseUser(String nameIdLine, String likedMoviesLine) {
+    private User parseUser(String nameIdLine, String likedMoviesLine) {
         String[] parts = nameIdLine.split("[،，,]\\s*");
        // System.out.println(parts[0]+ "       "+ parts[1]);
         if (parts.length != 2) {
@@ -106,7 +106,7 @@ public class FileReaderService {
         String id = parts[1].trim();
         List<String> likedIds = Arrays.asList(likedMoviesLine.split(",\\s*"));
 
-        return new Users(name, id, likedIds);
+        return new User(name, id, likedIds);
     }
 
 }

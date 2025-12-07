@@ -1,8 +1,8 @@
 package InOut;
 
 
-import Models.Movies;
-import Models.Users;
+import Models.Movie;
+import Models.User;
 import Services.recommendMovies;
 
 import java.io.FileWriter;
@@ -12,14 +12,14 @@ public class FileWriterService {
 
     public void writeRecommendations(
             String filePath,
-            List<Users> users,
-            List<Movies> movies,
+            List<User> users,
+            List<Movie> movies,
             recommendMovies recommender
     ) throws Exception {
 
         FileWriter writer = new FileWriter(filePath);
 
-        for (Users user : users) {
+        for (User user : users) {
             // Line 1: user's name, id
             writer.write(user.getName() + "," + user.getUserId() + "\n");
 

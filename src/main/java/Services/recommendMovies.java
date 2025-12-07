@@ -1,18 +1,18 @@
 package Services;
 
-import Models.Movies;
-import Models.Users;
+import Models.Movie;
+import Models.User;
 
 import java.util.*;
 
 public class recommendMovies {
 
-        public List<String> recommendMovies(Users user, List<Movies> movies) {
+        public List<String> recommendMovies(User user, List<Movie> movies) {
             Set<String> likedGenres = new HashSet<>();
 
             // collect liked genres
             for (String likedId : user.getLikedMovieIds()) {
-                for (Movies m : movies) {
+                for (Movie m : movies) {
                     if (m.getMovieId().equals(likedId)) {
                         likedGenres.addAll(m.getGenres());
                     }
@@ -22,7 +22,7 @@ public class recommendMovies {
             Set<String> recommendedTitles = new LinkedHashSet<>();
 
             // recommend movies with same genre
-            for (Movies m : movies) {
+            for (Movie m : movies) {
                 for (String g : m.getGenres()) {
                     if (likedGenres.contains(g)) {
                         recommendedTitles.add(m.getTitle());

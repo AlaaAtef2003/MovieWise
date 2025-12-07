@@ -1,7 +1,7 @@
 package Services;
 
-import Models.Movies;
-import Models.Users;
+import Models.Movie;
+import Models.User;
 
 import java.util.Set;
 
@@ -12,7 +12,7 @@ public class InputValidator {
     // INTEGRATION FUNCTIONS (MAIN ENTRY POINTS)
     // -------------------------------------------------
 
-    public void validateMovie(Movies movie, Set<String> usedMovieIds) {
+    public void validateMovie(Movie movie, Set<String> usedMovieIds) {
 
       //  System.out.println("title true");
         validateMovieTitle(movie.getTitle());                          // 1
@@ -27,7 +27,7 @@ public class InputValidator {
 
     }
 
-    public void validateUser(Users user, Set<String> usedUserIds) {
+    public void validateUser(User user, Set<String> usedUserIds) {
        // System.out.println("user 1");
         validateUserName(user.getName());              // 1
        // System.out.println("user 2");
