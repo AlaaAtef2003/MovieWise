@@ -42,7 +42,7 @@ class RecommendMovieTest {
 
     void testHappyScenario() throws Exception {
         MovieFile.write("""
-                Avatar,A156\r
+                Avatar,A153\r
                 SciFi,Adventure\r
                 \r
                 John Wick,JW123\r
@@ -525,7 +525,7 @@ class RecommendMovieTest {
         }
         List<String> lines = Files.readAllLines(Paths.get(recommendFiles));
         assertEquals(1, lines.size());
-        assertEquals("Error reading users: ERROR: User Name  Omar Khaled is wrong",lines.getFirst());
+        assertEquals("ERROR: User Name  Omar Khaled is wrong",lines.getFirst());
 
 
 
@@ -597,7 +597,7 @@ class RecommendMovieTest {
         }
         List<String> lines = Files.readAllLines(Paths.get(recommendFiles));
         assertEquals(1, lines.size());
-        assertEquals("Error reading users: ERROR: User Name 1mar Khaled is wrong",lines.getFirst());
+        assertEquals("ERROR: User Name 1mar Khaled is wrong",lines.getFirst());
 
 
     }
@@ -665,7 +665,7 @@ class RecommendMovieTest {
         }
         List<String> lines = Files.readAllLines(Paths.get(recommendFiles));
         assertEquals(1, lines.size());
-        assertEquals("Error reading users: ERROR: User Name $Mona Youssef is wrong",lines.getFirst());
+        assertEquals("ERROR: User Name $Mona Youssef is wrong",lines.getFirst());
 
 
     }
@@ -730,7 +730,7 @@ class RecommendMovieTest {
         }
         List<String> lines = Files.readAllLines(Paths.get(recommendFiles));
         assertEquals(1, lines.size());
-        assertEquals("Error reading users: ERROR: User Id 123456789 is wrong",lines.getFirst());
+        assertEquals("ERROR: User Id 123456789 is wrong",lines.getFirst());
 
 
     }
@@ -798,7 +798,7 @@ class RecommendMovieTest {
         }
         List<String> lines = Files.readAllLines(Paths.get(recommendFiles));
         assertEquals(1, lines.size());
-        assertEquals("Error reading users: ERROR: User Id 8765432 is wrong",lines.getFirst());
+        assertEquals("ERROR: User Id 8765432 is wrong",lines.getFirst());
 
 
     }
@@ -864,7 +864,7 @@ class RecommendMovieTest {
         }
         List<String> lines = Files.readAllLines(Paths.get(recommendFiles));
         assertEquals(1, lines.size());
-        assertEquals("Error reading users: ERROR: User Id 9988c766 is wrong",lines.getFirst());
+        assertEquals("ERROR: User Id 9988c766 is wrong",lines.getFirst());
 
 
     }
@@ -934,7 +934,7 @@ class RecommendMovieTest {
         }
         List<String> lines = Files.readAllLines(Paths.get(recommendFiles));
         assertEquals(1, lines.size());
-        assertEquals("Error reading users: ERROR: User Id 12345678cc is wrong",lines.getFirst());
+        assertEquals("ERROR: User Id 12345678cc is wrong",lines.getFirst());
 
 
     }
@@ -1001,7 +1001,7 @@ class RecommendMovieTest {
         }
         List<String> lines = Files.readAllLines(Paths.get(recommendFiles));
         assertEquals(1, lines.size());
-        assertEquals("Error reading users: ERROR: User Id 12345678& is wrong",lines.getFirst());
+        assertEquals("ERROR: User Id 12345678& is wrong",lines.getFirst());
 
 
     }
@@ -1067,7 +1067,7 @@ class RecommendMovieTest {
         }
         List<String> lines = Files.readAllLines(Paths.get(recommendFiles));
         assertEquals(1, lines.size());
-        assertEquals("Error reading users: Invalid user line format",lines.getFirst());
+        assertEquals("Invalid user line format",lines.getFirst());
 
 
     }
@@ -1132,7 +1132,7 @@ class RecommendMovieTest {
         }
         List<String> lines = Files.readAllLines(Paths.get(recommendFiles));
         assertEquals(1, lines.size());
-        assertEquals("Error reading users: ERROR: User Id 9988 766 is wrong",lines.getFirst());
+        assertEquals("ERROR: User Id 9988 766 is wrong",lines.getFirst());
 
 
     }
@@ -1197,7 +1197,7 @@ class RecommendMovieTest {
         }
         List<String> lines = Files.readAllLines(Paths.get(recommendFiles));
         assertEquals(1, lines.size());
-        assertEquals("Error reading users: ERROR: User Id 12345678cc is wrong",lines.getFirst());
+        assertEquals("ERROR: User Id 12345678cc is wrong",lines.getFirst());
 
 
     }

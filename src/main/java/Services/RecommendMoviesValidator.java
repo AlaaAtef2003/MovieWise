@@ -6,7 +6,9 @@ import Models.User;
 import java.util.*;
 
 public class RecommendMoviesValidator {
-
+     InputValidator inputValidator = new InputValidator();
+    Set<String> usedMovieIds = new HashSet<>();
+    Set<String> usedIds = new HashSet<>();
         public List<String> recommendMovies(User user, List<Movie> movies) {
             Set<String> likedGenres = new HashSet<>();
 

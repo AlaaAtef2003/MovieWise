@@ -121,7 +121,7 @@ public class FileReaderStatementCoverageTest {
                 () -> fileReader.readUsers(path));
 
         // (outer wrapper)
-        assertEquals("Error reading users: Invalid user line format", ex.getMessage());
+        assertEquals("Invalid user line format", ex.getMessage());
 
         //  (inner exception)
         assertEquals("Invalid user line format", ex.getCause().getMessage());
