@@ -2,7 +2,6 @@ package UnitTest;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -14,16 +13,16 @@ import org.junit.jupiter.api.BeforeEach;
 
 import org.junit.jupiter.api.Test;
 
-import InOut.FileReaderService;
-import InOut.FileWriterService;
+import InOut.FileReader;
+import InOut.FileWriter;
 import Models.Movie;
 import Models.User;
 import Services.recommendMovies;
 
 class RecommendMovieTest {
-    static FileReaderService fs;
-    static FileWriter MovieFile,UserFile;
-    FileWriterService fws;
+    static FileReader fs;
+    static java.io.FileWriter MovieFile,UserFile;
+    FileWriter fws;
     recommendMovies rm;
     //generated file names
     private final String films="MovieFileAmrTest.txt";
@@ -33,11 +32,11 @@ class RecommendMovieTest {
 
     @BeforeEach
     public void setup() throws Exception {
-        fs = new FileReaderService();
-        fws = new FileWriterService();
+        fs = new FileReader();
+        fws = new FileWriter();
         rm = new recommendMovies();
-        MovieFile = new FileWriter(films, false);
-        UserFile = new FileWriter(UsersFiles, false);
+        MovieFile = new java.io.FileWriter(films, false);
+        UserFile = new java.io.FileWriter(UsersFiles, false);
     }
     @Test
 
@@ -141,7 +140,7 @@ class RecommendMovieTest {
         catch (Exception e) {
 
             try {
-                FileWriter writer = new FileWriter(recommendFiles);
+                java.io.FileWriter writer = new java.io.FileWriter(recommendFiles);
                 writer.write(e.getMessage());
                 writer.close();
             } catch (Exception ex) {
@@ -207,7 +206,7 @@ class RecommendMovieTest {
         catch (Exception e) {
 
             try {
-                FileWriter writer = new FileWriter(recommendFiles);
+                java.io.FileWriter writer = new java.io.FileWriter(recommendFiles);
                 writer.write(e.getMessage());
                 writer.close();
             } catch (Exception ex) {
@@ -269,7 +268,7 @@ class RecommendMovieTest {
         catch (Exception e) {
 
             try {
-                FileWriter writer = new FileWriter(recommendFiles);
+                java.io.FileWriter writer = new java.io.FileWriter(recommendFiles);
                 writer.write(e.getMessage());
                 writer.close();
             } catch (Exception ex) {
@@ -326,7 +325,7 @@ class RecommendMovieTest {
         catch (Exception e) {
 
             try {
-                FileWriter writer = new FileWriter(recommendFiles);
+                java.io.FileWriter writer = new java.io.FileWriter(recommendFiles);
                 writer.write(e.getMessage());
                 writer.close();
             } catch (Exception ex) {
@@ -387,7 +386,7 @@ class RecommendMovieTest {
         catch (Exception e) {
 
             try {
-                FileWriter writer = new FileWriter(recommendFiles);
+                java.io.FileWriter writer = new java.io.FileWriter(recommendFiles);
                 writer.write(e.getMessage());
                 writer.close();
             } catch (Exception ex) {
@@ -449,7 +448,7 @@ class RecommendMovieTest {
         catch (Exception e) {
 
             try {
-                FileWriter writer = new FileWriter(recommendFiles);
+                java.io.FileWriter writer = new java.io.FileWriter(recommendFiles);
                 writer.write(e.getMessage());
                 writer.close();
             } catch (Exception ex) {
@@ -516,7 +515,7 @@ class RecommendMovieTest {
         catch (Exception e) {
 
             try {
-                FileWriter writer = new FileWriter(recommendFiles);
+                java.io.FileWriter writer = new java.io.FileWriter(recommendFiles);
                 writer.write(e.getMessage());
                 writer.close();
             } catch (Exception ex) {
@@ -588,7 +587,7 @@ class RecommendMovieTest {
         catch (Exception e) {
 
             try {
-                FileWriter writer = new FileWriter(recommendFiles);
+                java.io.FileWriter writer = new java.io.FileWriter(recommendFiles);
                 writer.write(e.getMessage());
                 writer.close();
             } catch (Exception ex) {
@@ -656,7 +655,7 @@ class RecommendMovieTest {
         catch (Exception e) {
 
             try {
-                FileWriter writer = new FileWriter(recommendFiles);
+                java.io.FileWriter writer = new java.io.FileWriter(recommendFiles);
                 writer.write(e.getMessage());
                 writer.close();
             } catch (Exception ex) {
@@ -721,7 +720,7 @@ class RecommendMovieTest {
         catch (Exception e) {
 
             try {
-                FileWriter writer = new FileWriter(recommendFiles);
+                java.io.FileWriter writer = new java.io.FileWriter(recommendFiles);
                 writer.write(e.getMessage());
                 writer.close();
             } catch (Exception ex) {
@@ -789,7 +788,7 @@ class RecommendMovieTest {
         catch (Exception e) {
 
             try {
-                FileWriter writer = new FileWriter(recommendFiles);
+                java.io.FileWriter writer = new java.io.FileWriter(recommendFiles);
                 writer.write(e.getMessage());
                 writer.close();
             } catch (Exception ex) {
@@ -855,7 +854,7 @@ class RecommendMovieTest {
         catch (Exception e) {
 
             try {
-                FileWriter writer = new FileWriter(recommendFiles);
+                java.io.FileWriter writer = new java.io.FileWriter(recommendFiles);
                 writer.write(e.getMessage());
                 writer.close();
             } catch (Exception ex) {
@@ -925,7 +924,7 @@ class RecommendMovieTest {
         catch (Exception e) {
 
             try {
-                FileWriter writer = new FileWriter(recommendFiles);
+                java.io.FileWriter writer = new java.io.FileWriter(recommendFiles);
                 writer.write(e.getMessage());
                 writer.close();
             } catch (Exception ex) {
@@ -992,7 +991,7 @@ class RecommendMovieTest {
         catch (Exception e) {
 
             try {
-                FileWriter writer = new FileWriter(recommendFiles);
+                java.io.FileWriter writer = new java.io.FileWriter(recommendFiles);
                 writer.write(e.getMessage());
                 writer.close();
             } catch (Exception ex) {
@@ -1058,7 +1057,7 @@ class RecommendMovieTest {
         catch (Exception e) {
 
             try {
-                FileWriter writer = new FileWriter(recommendFiles);
+                java.io.FileWriter writer = new java.io.FileWriter(recommendFiles);
                 writer.write(e.getMessage());
                 writer.close();
             } catch (Exception ex) {
@@ -1123,7 +1122,7 @@ class RecommendMovieTest {
         catch (Exception e) {
 
             try {
-                FileWriter writer = new FileWriter(recommendFiles);
+                java.io.FileWriter writer = new java.io.FileWriter(recommendFiles);
                 writer.write(e.getMessage());
                 writer.close();
             } catch (Exception ex) {
@@ -1188,7 +1187,7 @@ class RecommendMovieTest {
         catch (Exception e) {
 
             try {
-                FileWriter writer = new FileWriter(recommendFiles);
+                java.io.FileWriter writer = new java.io.FileWriter(recommendFiles);
                 writer.write(e.getMessage());
                 writer.close();
             } catch (Exception ex) {

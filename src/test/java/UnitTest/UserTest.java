@@ -1,6 +1,6 @@
 package UnitTest;
 
-import InOut.FileReaderService;
+import InOut.FileReader;
 import Models.User;
 import Services.InputValidator;
 import org.junit.Test;
@@ -537,7 +537,7 @@ public class UserTest {
     //valid input file users
     @Test
     public void testReadUsers_validFile_success() throws Exception {
-        FileReaderService service = new FileReaderService();
+        FileReader service = new FileReader();
 
         String path = "test.txt";
  //      FileWriter w = new FileWriter("test.txt");

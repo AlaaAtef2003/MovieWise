@@ -4,11 +4,10 @@ package org.Main;
 
 import Models.Movie;
 import Models.User;
-import InOut.FileReaderService;
-import InOut.FileWriterService;
+import InOut.FileReader;
+import InOut.FileWriter;
 import Services. recommendMovies;
 
-import java.io.FileWriter;
 import java.util.List;
 
 public class Main {
@@ -20,8 +19,8 @@ public class Main {
         String usersFile = "users.txt";
         String outputFile = "recommendations.txt";
 
-        FileReaderService fileReader = new FileReaderService();
-        FileWriterService fileWriter = new FileWriterService();
+        FileReader fileReader = new FileReader();
+        FileWriter fileWriter = new FileWriter();
         recommendMovies recommender = new  recommendMovies();
 
         try {
@@ -49,7 +48,7 @@ public class Main {
             // Write ONLY the first error to output file as required
             // ------------------------------------------------------------
             try {
-                FileWriter writer = new FileWriter("recommendation.txt");
+                java.io.FileWriter writer = new java.io.FileWriter("recommendation.txt");
                 writer.write(e.getMessage());
                 writer.close();
                 System.out.println("ERROR → written to recommendations.txt");
