@@ -3,7 +3,7 @@ package InOut;
 
 import Models.Movie;
 import Models.User;
-import Services.recommendMovies;
+import Services.RecommendMoviesValidator;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ public class FileWriter {
             String filePath,
             List<User> users,
             List<Movie> movies,
-            recommendMovies recommender
+            RecommendMoviesValidator recommender
     ) throws Exception {
 
         java.io.FileWriter writer = new java.io.FileWriter(filePath);

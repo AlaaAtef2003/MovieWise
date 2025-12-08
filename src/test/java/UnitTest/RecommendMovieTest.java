@@ -17,13 +17,13 @@ import InOut.FileReader;
 import InOut.FileWriter;
 import Models.Movie;
 import Models.User;
-import Services.recommendMovies;
+import Services.RecommendMoviesValidator;
 
 class RecommendMovieTest {
     static FileReader fs;
     static java.io.FileWriter MovieFile,UserFile;
     FileWriter fws;
-    recommendMovies rm;
+    RecommendMoviesValidator rm;
     //generated file names
     private final String films="MovieFileAmrTest.txt";
     private final String UsersFiles="UsersFileAmrTest.txt";
@@ -34,7 +34,7 @@ class RecommendMovieTest {
     public void setup() throws Exception {
         fs = new FileReader();
         fws = new FileWriter();
-        rm = new recommendMovies();
+        rm = new RecommendMoviesValidator();
         MovieFile = new java.io.FileWriter(films, false);
         UserFile = new java.io.FileWriter(UsersFiles, false);
     }

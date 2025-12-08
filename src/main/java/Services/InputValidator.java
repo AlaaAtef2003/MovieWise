@@ -13,26 +13,14 @@ public class InputValidator {
     // -------------------------------------------------
 
     public void validateMovie(Movie movie, Set<String> usedMovieIds) {
-
-      //  System.out.println("title true");
         validateMovieTitle(movie.getTitle());                          // 1
-       // System.out.println("title 1");
         validateMovieIdLetters(movie.getTitle(), movie.getMovieId());  // 2
-      //  System.out.println("title 2");
-
-       // System.out.println("title 3");
         ensureMovieIdIsUnique(movie.getMovieId(), movie.getTitle(),  usedMovieIds);
-
-
-
     }
 
     public void validateUser(User user, Set<String> usedUserIds) {
-       // System.out.println("user 1");
         validateUserName(user.getName());              // 1
-       // System.out.println("user 2");
         validateUserIdFormat(user.getUserId());        // 2
-       // System.out.println("user 3");
         checkUserIdUniqueness(user.getUserId(), usedUserIds); // 3
     }
 
@@ -50,8 +38,6 @@ public class InputValidator {
 
     private void validateMovieIdLetters(String title, String id) {
         String letters = extractCapitalLetters(title);
-       // System.out.println( letters);
-
         if (!id.startsWith(letters) || (3+ letters.length()) != id.length() )   {
             throw new RuntimeException("ERROR: Movie Id letters " + id + " are wrong");
         }
@@ -62,7 +48,6 @@ public class InputValidator {
     public void ensureMovieIdIsUnique(String movieId, String movieTitle, Set<String> usedMovieIds) {
 
         String numbers = GetNumberofId( movieTitle,movieId);
-       // System.out.println(numbers);
         // Must be exactly 3 digits
         if (!numbers.matches("\\d{3}")) {
             throw new RuntimeException("ERROR: Movie Id numbers " + movieId + " aren’t unique");
@@ -88,9 +73,6 @@ public class InputValidator {
     private String extractCapitalLetters(String title) {
         return title.replaceAll("[^A-Z]", "");
     }
-
-
-
 
 
     // -------------------------------------------------

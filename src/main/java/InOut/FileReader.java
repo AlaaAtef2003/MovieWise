@@ -29,14 +29,11 @@ public class FileReader {
                 if (genresLine == null) break;
 
                 Movie movie = parseMovie(titleIdLine, genresLine);
-//                String string = movie.toString();
-//                System.out.println(string);
                 validator.validateMovie(movie, usedMovieIds);
                 movies.add(movie);
 
             }
         } catch (Exception e) {
-            //System.out.println( e);
             throw new RuntimeException( e.getMessage(), e);
         }
 
@@ -46,8 +43,6 @@ public class FileReader {
     private Movie parseMovie(String titleIdLine, String genresLine) {
 
         String[] parts = titleIdLine.split("[،，,]\\s*");
-//        System.out.println(x);
-      //  System.out.println(titleIdLine + parts.length);
         if (parts.length != 2) {
             throw new IllegalArgumentException("Invalid movie line format" );
         }
@@ -57,8 +52,6 @@ public class FileReader {
 
         List<String> genres = Arrays.asList(genresLine.split(",\\s*"));
         Movie m = new Movie(title, id, genres);
-//        String string = m.toString();
-//        System.out.println(string);
         return new Movie(title, id, genres);
     }
 
@@ -95,7 +88,6 @@ public class FileReader {
 
     private User parseUser(String nameIdLine, String likedMoviesLine) {
         String[] parts = nameIdLine.split("[،，,]\\s*");
-       // System.out.println(parts[0]+ "       "+ parts[1]);
         if (parts.length != 2) {
             throw new IllegalArgumentException("Invalid user line format" );
         }

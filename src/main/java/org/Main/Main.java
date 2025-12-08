@@ -6,7 +6,7 @@ import Models.Movie;
 import Models.User;
 import InOut.FileReader;
 import InOut.FileWriter;
-import Services. recommendMovies;
+import Services.RecommendMoviesValidator;
 
 import java.util.List;
 
@@ -21,20 +21,19 @@ public class Main {
 
         FileReader fileReader = new FileReader();
         FileWriter fileWriter = new FileWriter();
-        recommendMovies recommender = new  recommendMovies();
+        RecommendMoviesValidator recommender = new RecommendMoviesValidator();
 
         try {
             // ------------------------------
             // Read & validate movies file
             // ------------------------------
-           // System.out.println("movies ");
             List<Movie> movies = fileReader.readMovies(moviesFile);
-          //  System.out.println("movies true");
+
             // ------------------------------
             // Read & validate users file
             // ------------------------------
             List<User> users = fileReader.readUsers(usersFile);
-           // System.out.println("users true");
+
             // ------------------------------
             // If everything is valid → write recommendations
             // ------------------------------
