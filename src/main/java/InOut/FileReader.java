@@ -80,7 +80,7 @@ public class FileReader {
                 users.add(user);
             }
         } catch (Exception e) {
-            throw new RuntimeException("Error reading users: " + e.getMessage(), e);
+            throw new RuntimeException(e.getMessage(), e);
         }
 
         return users;
