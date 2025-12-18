@@ -17,6 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class IntegrationTest {
 
+
     private Path usersFile;
     private Path moviesFile;
     private Path outputFile;

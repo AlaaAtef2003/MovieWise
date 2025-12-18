@@ -42,7 +42,7 @@ public class DecisionTableTest {
                 integration.outputFile("users.txt", "movies.txt", "output.txt"));
 
         assertEquals("ERROR: Movie Title matrix is wrong", ex.getMessage());
-         }
+    }
 
     @Test
     void DT_MovieTitle_Valid() throws Exception {
@@ -65,58 +65,58 @@ public class DecisionTableTest {
     }
 
 
-    //ERROR: Movie Id letters XX123 are wrong
-         @Test
-         void DT_ErrorInMovieIdLetters() throws Exception {
+    //ERROR: Movie ID letters XX123 are wrong
+    @Test
+    void DT_ErrorInMovieIdLetters() throws Exception {
 
-             writeFile("movies.txt",
-                     "Matrix,XX123\n" +   // Wrong prefix
-                             "Action\n");
+        writeFile("movies.txt",
+                "Matrix,XX123\n" +   // Wrong prefix
+                        "Action\n");
 
-             writeFile("users.txt",
-                     "John,12345678A\nXX123\n");
+        writeFile("users.txt",
+                "John,12345678A\nXX123\n");
 
-             RuntimeException ex = assertThrows(RuntimeException.class, () ->
-                     integration.outputFile("users.txt", "movies.txt", "output.txt"));
+        RuntimeException ex = assertThrows(RuntimeException.class, () ->
+                integration.outputFile("users.txt", "movies.txt", "output.txt"));
 
-             assertEquals("ERROR: Movie Id letters XX123 are wrong", ex.getMessage());
-                }
+        assertEquals("ERROR: Movie Id letters XX123 are wrong", ex.getMessage());
+    }
 
-                //ERROR: Movie Id numbers M123 aren’t unique
-                @Test
-                void DT_ErrorInMovieIdUniqueNumbers() throws Exception {
+    //ERROR: Movie Id numbers M123 aren’t unique
+    @Test
+    void DT_ErrorInMovieIdUniqueNumbers() throws Exception {
 
-                    writeFile("movies.txt",
-                            """
-                                    Matrix,M123
-                                    Action
-                                    Matrix 2,M123
-                                    Action
-                                    """);  // Duplicate numeric part 123
+        writeFile("movies.txt",
+                """
+                        Matrix,M123
+                        Action
+                        Matrix 2,M123
+                        Action
+                        """);  // Duplicate numeric part 123
 
-                    writeFile("users.txt",
-                            "John,12345678A\nM123\n");
+        writeFile("users.txt",
+                "John,12345678A\nM123\n");
 
-                    RuntimeException ex = assertThrows(RuntimeException.class, () ->
-                            integration.outputFile("users.txt", "movies.txt", "output.txt"));
+        RuntimeException ex = assertThrows(RuntimeException.class, () ->
+                integration.outputFile("users.txt", "movies.txt", "output.txt"));
 
-                    assertEquals("ERROR: Movie Id numbers M123 aren’t unique", ex.getMessage());
-                      }
-        //ERROR: User Name  John is wrong
-        @Test
-        void DT_ErrorInUserName() throws Exception {
+        assertEquals("ERROR: Movie Id numbers M123 aren’t unique", ex.getMessage());
+    }
+    //ERROR: Username  John is wrong
+    @Test
+    void DT_ErrorInUserName() throws Exception {
 
-            writeFile("movies.txt",
-                    "Matrix,M123\nAction\n");
+        writeFile("movies.txt",
+                "Matrix,M123\nAction\n");
 
-            writeFile("users.txt",
-                    " John,12345678A\nM123\n");  // Leading space → invalid
+        writeFile("users.txt",
+                " John,12345678A\nM123\n");  // Leading space → invalid
 
-            RuntimeException ex = assertThrows(RuntimeException.class, () ->
-                    integration.outputFile("users.txt", "movies.txt", "output.txt"));
+        RuntimeException ex = assertThrows(RuntimeException.class, () ->
+                integration.outputFile("users.txt", "movies.txt", "output.txt"));
 
-            assertEquals("ERROR: User Name  John is wrong", ex.getMessage());
-                }
+        assertEquals("ERROR: User Name  John is wrong", ex.getMessage());
+    }
 
     @Test
     void DT_ErrorInUserName_Valid() throws Exception {
@@ -128,7 +128,7 @@ public class DecisionTableTest {
                         Action
                         """);
 
-        // VALID user name (no leading space)
+        // VALID username (no leading space)
         writeFile("users.txt",
                 """
                         John,12345678A
@@ -170,7 +170,7 @@ public class DecisionTableTest {
         assertEquals("Invalid movie line format", ex.getMessage());
 
     }
-    //ERROR: User Id 12345 is wrong
+    //ERROR: User ID 12345 is wrong
     @Test
     void DT_ErrorInUserId() throws Exception {
 
@@ -241,15 +241,15 @@ public class DecisionTableTest {
     @Test
     void InvalidInternalData_ThrowsError() throws Exception {
 
-        writeFile("movies.txt", "Matrix,WRONGID\nAction\n");
-        writeFile("users.txt", "John,12345678A\nWRONGID\n");
+        writeFile("movies.txt", "Matrix,WRONGED\nAction\n");
+        writeFile("users.txt", "John,12345678A\nWRONGED\n");
 
         RuntimeException ex = assertThrows(RuntimeException.class, () ->
                 integration.outputFile("users.txt", "movies.txt", "output.txt")
         );
 
-        assertEquals("ERROR: Movie Id letters WRONGID are wrong", ex.getMessage());
-          }
+        assertEquals("ERROR: Movie Id letters WRONGED are wrong", ex.getMessage());
+    }
 
     // ============================================================
     // R4: NO RECOMMENDATIONS → OUTPUT NO EXCEPTION
