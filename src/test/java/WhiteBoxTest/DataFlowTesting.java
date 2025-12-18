@@ -11,6 +11,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
 import java.util.Set;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.HashSet;
 
 /**
@@ -22,73 +24,165 @@ import java.util.HashSet;
  */
 
 public class DataFlowTesting {
-    /* ===================== ALL-DEFS COVERAGE ===================== */
+    // =====================================================
+    // FUNCTION 1: FileReader.readMovies()
+    // =====================================================
 
-    /**
-     * usersFile definition used in validation and recommendation
-     */
+    // ---------- ALL-DEFS ----------
     @Test
-    void testAllUses_InvalidUserData() {
-        Integration integration = new Integration();
+    public void testReadMovies_AllDefs() throws Exception {
+        createValidMoviesFile();
 
-        RuntimeException ex = assertThrows(RuntimeException.class, () -> integration.outputFile(
-                "src/test/resources/invalid_users.txt",
-                "src/test/resources/movies.txt",
-                "src/test/resources/output.txt"));
+        FileReader reader = new FileReader();
+        List<Movie> movies = reader.readMovies("movies_test.txt");
 
-        assertTrue(ex.getMessage().toLowerCase().contains("user"));
+        assertNotNull(movies);              // use of defined variable "movies"
+        assertFalse(movies.isEmpty());      // confirms movies.add()
     }
 
-    /* ===================== ALL-DU-PATHS COVERAGE ===================== */
-
-    /**
-     * RecommendMoviesValidator
-     * DU paths:
-     * likedGenres -> contains()
-     * recommendedTitles -> add()
-     */
+    // ---------- ALL-USES ----------
     @Test
-    void testAllDUPaths_RecommendMoviesValidator() {
-        Movie actionMovie = new Movie("Action Hero", "A001", List.of("Action"));
-        Movie dramaMovie = new Movie("Sad Story", "D001", List.of("Drama"));
+    public void testReadMovies_AllUses() throws Exception {
+        createValidMoviesFile();
 
-        User user = new User("Ahmed", "12345678", List.of("A001"));
+        FileReader reader = new FileReader();
+        List<Movie> movies = reader.readMovies("movies_test.txt");
 
-        RecommendMoviesValidator validator = new RecommendMoviesValidator();
-        List<String> recommendations = validator.recommendMovies(user, List.of(actionMovie, dramaMovie));
-
-        assertEquals(1, recommendations.size());
-        assertEquals("Action Hero", recommendations.get(0));
+        Movie m = movies.get(0);            // use of defined "movie"
+        assertNotNull(m.getMovieId());      // use of movieId
+        assertNotNull(m.getTitle());        // use of title
     }
 
-    /**
-     * InputValidator Movie ID uniqueness
-     * usedMovieIds: DEF -> contains() -> add()
-     */
+    // ---------- ALL-DU-PATHS ----------
     @Test
-    void testAllDUPaths_InputValidator_MovieIds() {
+    public void testReadMovies_AllDUPaths() throws Exception {
+        createValidMoviesFile();
+
+        FileReader reader = new FileReader();
+        List<Movie> movies = reader.readMovies("movies_test.txt");
+
+        for (Movie m : movies) {
+            assertTrue(m.getMovieId().length() > 0); // def → multiple uses
+        }
+    }
+
+    // =====================================================
+    // FUNCTION 2: InputValidator.validateMovie()
+    // =====================================================
+
+    // ---------- ALL-DEFS ----------
+    @Test
+    public void testValidateMovie_AllDefs() {
         InputValidator validator = new InputValidator();
-        Set<String> usedMovieIds = new HashSet<>();
+        Set<String> usedIds = new HashSet<>();
 
-        Movie movie = new Movie("Test Movie", "TM001", List.of("Comedy"));
+        Movie movie = new Movie("Avatar", "A123", List.of("Action"));
 
-        assertDoesNotThrow(() -> validator.validateMovie(movie, usedMovieIds));
-        assertTrue(usedMovieIds.contains("TM001"));
+        validator.validateMovie(movie, usedIds);
+
+        assertEquals(1, usedIds.size());   // confirms definition used
     }
 
-    /**
-     * InputValidator User ID uniqueness
-     * usedUserIds: DEF -> contains() -> add()
-     */
+    // ---------- ALL-USES ----------
     @Test
-    void testAllDUPaths_InputValidator_UserIds() {
+    public void testValidateMovie_AllUses() {
         InputValidator validator = new InputValidator();
-        Set<String> usedUserIds = new HashSet<>();
+        Set<String> usedIds = new HashSet<>();
 
-        User user = new User("Sara", "87654321", List.of("A001"));
+        Movie movie = new Movie("Titanic", "T456", List.of("Drama"));
 
-        assertDoesNotThrow(() -> validator.validateUser(user, usedUserIds));
-        assertTrue(usedUserIds.contains("87654321"));
+        validator.validateMovie(movie, usedIds);
+
+        assertTrue(usedIds.contains("456")); // use of extracted ID numbers
+    }
+
+    // ---------- ALL-DU-PATHS ----------
+    @Test
+    public void testValidateMovie_AllDUPaths() {
+        InputValidator validator = new InputValidator();
+        Set<String> usedIds = new HashSet<>();
+
+        Movie m1 = new Movie("Jaws", "J001", List.of("Horror"));
+        Movie m2 = new Movie("Joker", "J002", List.of("Drama"));
+
+        validator.validateMovie(m1, usedIds);
+        validator.validateMovie(m2, usedIds);
+
+        assertEquals(2, usedIds.size());   // multiple DU paths
+    }
+
+    // =====================================================
+    // FUNCTION 3: RecommendMoviesValidator.recommendMovies()
+    // =====================================================
+
+    // ---------- ALL-DEFS ----------
+    @Test
+    public void testRecommendMovies_AllDefs() {
+        RecommendMoviesValidator recommender = new RecommendMoviesValidator();
+
+        User user = new User("Ali", "12345678",
+                List.of("M001"));
+
+        Movie movie = new Movie("Matrix", "M001",
+                List.of("Sci-Fi"));
+
+        List<String> result =
+                recommender.recommendMovies(user, List.of(movie));
+
+        assertNotNull(result); // uses defined recommendedTitles
+    }
+
+    // ---------- ALL-USES ----------
+    @Test
+    public void testRecommendMovies_AllUses() {
+        RecommendMoviesValidator recommender = new RecommendMoviesValidator();
+
+        User user = new User("Ali", "12345678",
+                List.of("M001"));
+
+        Movie m1 = new Movie("Matrix", "M001",
+                List.of("Sci-Fi"));
+        Movie m2 = new Movie("Avatar", "M002",
+                List.of("Sci-Fi"));
+
+        List<String> result =
+                recommender.recommendMovies(user, List.of(m1, m2));
+
+        assertTrue(result.contains("Avatar")); // use of likedGenres
+    }
+
+    // ---------- ALL-DU-PATHS ----------
+    @Test
+    public void testRecommendMovies_AllDUPaths() {
+        RecommendMoviesValidator recommender = new RecommendMoviesValidator();
+
+        User user = new User("Ali", "12345678",
+                List.of("M001"));
+
+        Movie m1 = new Movie("Matrix", "M001",
+                List.of("Sci-Fi"));
+        Movie m2 = new Movie("Interstellar", "M002",
+                List.of("Sci-Fi"));
+
+        List<String> result =
+                recommender.recommendMovies(user, List.of(m1, m2));
+
+        assertEquals(2, result.size()); // multiple DU paths
+    }
+
+    // =====================================================
+    // HELPER METHOD (creates test movie file)
+    // =====================================================
+    private void createValidMoviesFile() throws Exception {
+        FileWriter writer = new FileWriter("movies_test.txt");
+
+        writer.write("Avatar,A123\n");
+        writer.write("Action\n");
+
+        writer.write("Titanic,T456\n");
+        writer.write("Drama\n");
+
+        writer.close();
     }
 
 }
