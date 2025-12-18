@@ -94,7 +94,7 @@ class FileReaderPathCoverage {
 	        } catch (Exception ignored) {}
 
 	        List<Movie> movies = fileReader.readMovies(path);
-	        assertEquals(movies.size(), 1);
+	        assertEquals(1, movies.size());
 	    }
 	 
 	 
@@ -105,7 +105,7 @@ class FileReaderPathCoverage {
 		void testReadUser_FirstLineIsNull() throws Exception {
 	        String path = UsersFiles;
 	        try (FileWriter fw = new FileWriter(path)) {
-	            
+
 	        }
 	        List<User> Users = fileReader.readUsers(path);
 	        assertEquals(0, Users.size());
