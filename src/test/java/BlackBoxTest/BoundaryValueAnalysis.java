@@ -3,7 +3,8 @@ package BlackBoxTest;
 import Models.Movie;
 import Models.User;
 import Services.InputValidator;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+
 
 import java.util.HashSet;
 import java.util.List;
