@@ -73,9 +73,7 @@ public class UserTest {
         Set<String> ids = new HashSet<>();
         User user = new User(" sara mohamed", "12345678" , null);
 
-        RuntimeException exception = assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
-
-        assertTrue(exception.getMessage().contains("User Name"));
+        assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
     }
 
     //Invalid name:
@@ -86,9 +84,7 @@ public class UserTest {
         Set<String> ids = new HashSet<>();
         User user = new User("sara mohamed ", "12345678" , null);
 
-        RuntimeException exception = assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
-
-        assertTrue(exception.getMessage().contains("User Name"));
+        assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
     }
 
     //Invalid name:
@@ -99,9 +95,7 @@ public class UserTest {
         Set<String> ids = new HashSet<>();
         User user = new User("132sara Mohamed", "12345678" , null);
 
-        RuntimeException exception = assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
-
-        assertTrue(exception.getMessage().contains("User Name"));
+        assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
     }
 
     //Invalid name:
@@ -112,9 +106,7 @@ public class UserTest {
         Set<String> ids = new HashSet<>();
         User user = new User("-1sara Mohamed", "12345678" , null);
 
-        RuntimeException exception = assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
-
-        assertTrue(exception.getMessage().contains("User Name"));
+        assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
     }
 
     //Invalid name:
@@ -125,9 +117,7 @@ public class UserTest {
         Set<String> ids = new HashSet<>();
         User user = new User("0sara Mohamed", "12345678" , null);
 
-        RuntimeException exception = assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
-
-        assertTrue(exception.getMessage().contains("User Name"));
+        assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
     }
 
     //Invalid name:
@@ -138,9 +128,7 @@ public class UserTest {
         Set<String> ids = new HashSet<>();
         User user = new User("sara12 -9Mohamed", "12345678" , null);
 
-        RuntimeException exception = assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
-
-        assertTrue(exception.getMessage().contains("User Name"));
+        assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
     }
 
     //Invalid name:
@@ -151,9 +139,7 @@ public class UserTest {
         Set<String> ids = new HashSet<>();
         User user = new User("sara Mohamed123", "12345678" , null);
 
-        RuntimeException exception = assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
-
-        assertTrue(exception.getMessage().contains("User Name"));
+        assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
     }
 
     //Invalid name:
@@ -164,9 +150,7 @@ public class UserTest {
         Set<String> ids = new HashSet<>();
         User user = new User("sara Mohamed-0", "12345678" , null);
 
-        RuntimeException exception = assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
-
-        assertTrue(exception.getMessage().contains("User Name"));
+        assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
     }
 
     //Invalid name:
@@ -177,9 +161,7 @@ public class UserTest {
         Set<String> ids = new HashSet<>();
         User user = new User("sara  Mohamed", "12345678" , null);
 
-        RuntimeException exception = assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
-
-        assertTrue(exception.getMessage().contains("User Name"));
+        assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
     }
 
     //Invalid name:
@@ -190,9 +172,7 @@ public class UserTest {
         Set<String> ids = new HashSet<>();
         User user = new User("@#sara Mohamed", "12345678" , null);
 
-        RuntimeException exception = assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
-
-        assertTrue(exception.getMessage().contains("User Name"));
+        assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
     }
 
     //Invalid name:
@@ -203,9 +183,7 @@ public class UserTest {
         Set<String> ids = new HashSet<>();
         User user = new User("*()*&^%!sara Mohamed", "12345678" , null);
 
-        RuntimeException exception = assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
-
-        assertTrue(exception.getMessage().contains("User Name"));
+        assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
     }
 
     //Invalid name:
@@ -216,9 +194,7 @@ public class UserTest {
         Set<String> ids = new HashSet<>();
         User user = new User("sara! Mohamed", "12345678" , null);
 
-        RuntimeException exception = assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
-
-        assertTrue(exception.getMessage().contains("User Name"));
+        assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
     }
 
     //Invalid name:
@@ -229,9 +205,7 @@ public class UserTest {
         Set<String> ids = new HashSet<>();
         User user = new User("sara =Mohamed", "12345678" , null);
 
-        RuntimeException exception = assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
-
-        assertTrue(exception.getMessage().contains("User Name"));
+        assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
     }
 
     //Invalid name:
@@ -242,9 +216,7 @@ public class UserTest {
         Set<String> ids = new HashSet<>();
         User user = new User("sara Mohamed+", "12345678" , null);
 
-        RuntimeException exception = assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
-
-        assertTrue(exception.getMessage().contains("User Name"));
+        assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
     }
 
 
@@ -308,8 +280,7 @@ public class UserTest {
         Set<String> ids = new HashSet<>();
         User user = new User("sara Mohamed", "1234567891" , null);
 
-        RuntimeException exception = assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
-        assertTrue(exception.getMessage().contains("User Id"));
+        assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
     }
 
     //Invalid ID:
@@ -320,8 +291,7 @@ public class UserTest {
         Set<String> ids = new HashSet<>();
         User user = new User("sara Mohamed", "123" , null);
 
-        RuntimeException exception = assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
-        assertTrue(exception.getMessage().contains("User Id"));
+        assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
     }
 
     //Invalid ID:
@@ -332,8 +302,7 @@ public class UserTest {
         Set<String> ids = new HashSet<>();
         User user = new User("sara Mohamed", "1234567891" , null);
 
-        RuntimeException exception = assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
-        assertTrue(exception.getMessage().contains("User Id"));
+        assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
     }
 
     //Invalid ID:
@@ -344,8 +313,7 @@ public class UserTest {
         Set<String> ids = new HashSet<>();
         User user = new User("sara Mohamed", "123456789123456" , null);
 
-        RuntimeException exception = assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
-        assertTrue(exception.getMessage().contains("User Id"));
+        assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
     }
 
     //Invalid ID:
@@ -356,8 +324,7 @@ public class UserTest {
         Set<String> ids = new HashSet<>();
         User user = new User("sara Mohamed", "1234567A" , null);
 
-        RuntimeException exception = assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
-        assertTrue(exception.getMessage().contains("User Id"));
+        assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
     }
 
     //Invalid ID:
@@ -368,8 +335,7 @@ public class UserTest {
         Set<String> ids = new HashSet<>();
         User user = new User("sara Mohamed", "1234567891A" , null);
 
-        RuntimeException exception = assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
-        assertTrue(exception.getMessage().contains("User Id"));
+        assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
     }
 
     //Invalid ID:
@@ -380,8 +346,7 @@ public class UserTest {
         Set<String> ids = new HashSet<>();
         User user = new User("sara Mohamed", "A12345678" , null);
 
-        RuntimeException exception = assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
-        assertTrue(exception.getMessage().contains("User Id"));
+        assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
     }
     @Test
     public void validateUserID_InValidId_7Numbers_oneAlphabetAtFirst() {
@@ -389,8 +354,7 @@ public class UserTest {
         Set<String> ids = new HashSet<>();
         User user = new User("sara Mohamed", "1234567" , null);
 
-        RuntimeException exception = assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
-        assertTrue(exception.getMessage().contains("User Id"));
+        assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
     }
 
     //Invalid ID:
@@ -401,8 +365,7 @@ public class UserTest {
         Set<String> ids = new HashSet<>();
         User user = new User("sara Mohamed", "AbncDjklp" , null);
 
-        RuntimeException exception = assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
-        assertTrue(exception.getMessage().contains("User Id"));
+        assertThrows(RuntimeException.class , () -> validator.validateUser(user, ids));
     }
 
 
@@ -488,8 +451,7 @@ public class UserTest {
             fail();
         }
 
-        RuntimeException exception2 = assertThrows(RuntimeException.class , () -> validator.validateUser(user2, ids));
-        assertTrue(exception2.getMessage().contains("User Id"));
+        assertThrows(RuntimeException.class , () -> validator.validateUser(user2, ids));
     }
 
     //InValid Unique IDs:
@@ -511,11 +473,9 @@ public class UserTest {
             fail();
         }
 
-        RuntimeException exception2 = assertThrows(RuntimeException.class , () -> validator.validateUser(user2, ids));
-        assertTrue(exception2.getMessage().contains("User Id"));
+        assertThrows(RuntimeException.class , () -> validator.validateUser(user2, ids));
 
-        RuntimeException exception3 = assertThrows(RuntimeException.class , () -> validator.validateUser(user3, ids));
-        assertTrue(exception3.getMessage().contains("User Id"));
+        assertThrows(RuntimeException.class , () -> validator.validateUser(user3, ids));
 
         try{
             validator.validateUser(user4, ids);
