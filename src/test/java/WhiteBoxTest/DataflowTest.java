@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Set;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.util.HashSet;
+import InOut.FileReader;
 
 /**
  * Dataflow White-Box Testing
@@ -23,7 +23,7 @@ import java.util.HashSet;
  * - All-DU-Paths
  */
 
-public class DataFlowTesting {
+public class DataflowTest {
     // =====================================================
     // FUNCTION 1: FileReader.readMovies()
     // =====================================================
@@ -36,8 +36,8 @@ public class DataFlowTesting {
         FileReader reader = new FileReader();
         List<Movie> movies = reader.readMovies("movies_test.txt");
 
-        assertNotNull(movies);              // use of defined variable "movies"
-        assertFalse(movies.isEmpty());      // confirms movies.add()
+        assertNotNull(movies);  "movies"
+        assertFalse(movies.isEmpty()); s movies.add()
     }
 
     // ---------- ALL-USES ----------
@@ -48,9 +48,9 @@ public class DataFlowTesting {
         FileReader reader = new FileReader();
         List<Movie> movies = reader.readMovies("movies_test.txt");
 
-        Movie m = movies.get(0);            // use of defined "movie"
-        assertNotNull(m.getMovieId());      // use of movieId
-        assertNotNull(m.getTitle());        // use of title
+        Movie m = movies.get(0); ie"
+        assertNotNull(m.getMovieId()); movieId
+        assertNotNull(m.getTitle()); e
     }
 
     // ---------- ALL-DU-PATHS ----------
@@ -80,7 +80,7 @@ public class DataFlowTesting {
 
         validator.validateMovie(movie, usedIds);
 
-        assertEquals(1, usedIds.size());   // confirms definition used
+        assertEquals(1, usedIds.size()); onfirms definition used
     }
 
     // ---------- ALL-USES ----------
@@ -108,7 +108,7 @@ public class DataFlowTesting {
         validator.validateMovie(m1, usedIds);
         validator.validateMovie(m2, usedIds);
 
-        assertEquals(2, usedIds.size());   // multiple DU paths
+        assertEquals(2, usedIds.size()); ultiple DU paths
     }
 
     // =====================================================
@@ -126,10 +126,7 @@ public class DataFlowTesting {
         Movie movie = new Movie("Matrix", "M001",
                 List.of("Sci-Fi"));
 
-        List<String> result =
-                recommender.recommendMovies(user, List.of(movie));
-
-        assertNotNull(result); // uses defined recommendedTitles
+        List<String> result = tNull(result); // uses defined recommendedTitles
     }
 
     // ---------- ALL-USES ----------
@@ -145,12 +142,9 @@ public class DataFlowTesting {
         Movie m2 = new Movie("Avatar", "M002",
                 List.of("Sci-Fi"));
 
-        List<String> result =
-                recommender.recommendMovies(user, List.of(m1, m2));
-
-        assertTrue(result.contains("Avatar")); // use of likedGenres
-    }
-
+        List<String> result = recommender.recommendMovies(user, List.of(m1, m2));
+ ue(result.contains("Avatar")); // use of likedGenres
+    } 
     // ---------- ALL-DU-PATHS ----------
     @Test
     public void testRecommendMovies_AllDUPaths() {
@@ -164,14 +158,11 @@ public class DataFlowTesting {
         Movie m2 = new Movie("Interstellar", "M002",
                 List.of("Sci-Fi"));
 
-        List<String> result =
-                recommender.recommendMovies(user, List.of(m1, m2));
+        List<String> result = recommender.recommendMovies(user, List.of(m1, m2));
 
-        assertEquals(2, result.size()); // multiple DU paths
-    }
+        assertEquals(2, resul 
 
-    // =====================================================
-    // HELPER METHOD (creates test movie file)
+    // ====================== THOD (creates test movie file)
     // =====================================================
     private void createValidMoviesFile() throws Exception {
         FileWriter writer = new FileWriter("movies_test.txt");
