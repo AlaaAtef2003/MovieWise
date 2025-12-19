@@ -27,15 +27,6 @@ public class FileReaderTestBranchCov {
         return file;
     }
 
-//    @Test
-//    public void testValidMovie() throws Exception {
-//        assertDoesNotThrow(() -> {
-//            Path file = createTempFile("Movie1,1\nAction,Drama\n");
-//            List<Movie> movies = reader.readMovies(file.toString());
-//            assertEquals(1, movies.size());
-//            assertEquals("Movie1", movies.get(0).getTitle());
-//        });
-//    }
 
     @Test
     public void testMovieLineMissingComma() throws Exception {
@@ -43,15 +34,6 @@ public class FileReaderTestBranchCov {
         Exception ex = assertThrows(RuntimeException.class, () -> reader.readMovies(file.toString()));
         assertTrue(ex.getCause().getMessage().contains("Invalid movie line format"));
     }
-//    @Test
-//    public void testValidUser() throws Exception {
-//        assertDoesNotThrow(() -> {
-//            Path file = createTempFile("John,200\nMovie1\n");
-//            List<User> users = reader.readUsers(file.toString());
-//            assertEquals(1, users.size());
-//            assertEquals("John", users.get(0).getName());
-//        });
-//    }
 
     @Test
     public void testUserLineMissingComma() throws Exception {

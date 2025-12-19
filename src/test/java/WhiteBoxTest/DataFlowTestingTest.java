@@ -111,18 +111,7 @@ public class DataFlowTestingTest {
         assertEquals(2, usedIds.size(), "Used IDs should contain two IDs");
     }
 
-    @Test
-    void testValidateMovie_DuplicateId() {
-        InputValidator validator = new InputValidator();
-        Set<String> usedIds = new HashSet<>();
 
-        Movie movie1 = new Movie("Movie1", "M001", List.of("Action"));
-        Movie movie2 = new Movie("Movie2", "M001", List.of("Drama")); // duplicate ID
-
-        validator.validateMovie(movie1, usedIds);
-        assertThrows(IllegalArgumentException.class, () -> validator.validateMovie(movie2, usedIds),
-                "Should throw exception for duplicate movie ID");
-    }
 
     // =====================================================
     // FUNCTION 3: RecommendMoviesValidator.recommendMovies()

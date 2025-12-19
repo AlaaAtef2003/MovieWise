@@ -64,33 +64,7 @@ public class FileWriterBranchCoverageTest {
     }
 
     // ===============================
-    // Test 3: Two users, mixed recommendations
-    // ===============================
-//    @Test
-//    void testTwoUsersMixedOutput() throws Exception {
-//        String outPath = "out_two_users.txt";
-//
-//        User u1 = new User("Sara", "11111111A", List.of("A001"));
-//        User u2 = new User("Mark", "22222222B", List.of()); // no recommendations
-//
-//        Movie m1 = new Movie("A", "A001", List.of("Drama"));
-//        Movie m2 = new Movie("B", "B001", List.of("Drama"));
-//        Movie m3 = new Movie("C", "C001", List.of("Action"));
-//
-//        fileWriter.writeRecommendations(outPath, Arrays.asList(u1, u2), Arrays.asList(m1, m2, m3), recommender);
-//
-//        String content = readAll(outPath);
-//        assertEquals(
-//                """
-//                Sara,11111111A
-//                A,B
-//                Mark,22222222B
-//
-//               \s""", content);
-//    }
-
-    // ===============================
-    // Test 4: FileWriter closes file correctly
+    // Test 3: FileWriter closes file correctly
     // ===============================
     @Test
     void testFileClosedSuccessfully() throws Exception {

@@ -51,16 +51,8 @@ public class InputValidatorBranchCoverageTest {
         assertTrue(ex.getMessage().contains("ERROR: Movie Id letters X123 are wrong"));
     }
 
-    // Branch 4: Movie ID numbers not 3 digits
-//    @Test
-//    void testMovieIdNumbersInvalid() {
-//        Movie m = new Movie("Matrix", "M12", null);
-//        Exception ex = assertThrows(RuntimeException.class,
-//                () -> validator.validateMovie(m, usedMovieIds));
-//        assertTrue(ex.getMessage().contains("ERROR: Movie Id numbers M12 aren’t unique"));
-//    }
 
-    // Branch 5: Movie ID numbers duplicate
+    // Branch 4: Movie ID numbers duplicate
     @Test
     void testMovieIdNumbersDuplicate() {
         usedMovieIds.add("123");
